@@ -72,7 +72,6 @@ const organizationJsonLd = {
   url: siteConfig.url,
   slogan: siteConfig.tagline,
   description: siteConfig.description,
-  email: siteConfig.email,
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.address.line1,
@@ -83,8 +82,8 @@ const organizationJsonLd = {
   },
   contactPoint: {
     "@type": "ContactPoint",
-    email: siteConfig.email,
     contactType: "customer support",
+    url: `${siteConfig.url}/contact`,
   },
 };
 

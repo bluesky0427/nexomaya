@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
@@ -6,12 +7,12 @@ import CTASection from "@/components/CTASection";
 import { services } from "@/lib/content";
 import { BridgeIcon } from "@/components/Icons";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Services",
   description:
     "Nexomaya Technology Group provides IT consulting, software development, business automation, digital transformation, and cross-industry collaboration.",
-  alternates: { canonical: "/what-we-do" },
-};
+  path: "/what-we-do",
+});
 
 const approachSteps = [
   {

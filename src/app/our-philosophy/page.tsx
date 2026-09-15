@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Our Philosophy",
   description:
     "Nexomaya Technology Group believes everyone has skills, every field has value, and technology becomes powerful when it serves people.",
-  alternates: { canonical: "/our-philosophy" },
-};
+  path: "/our-philosophy",
+});
 
 const technologyExamples = [
   "A farmer using knowledge of land and seasons is using technology.",

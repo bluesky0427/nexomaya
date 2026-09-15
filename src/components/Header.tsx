@@ -146,9 +146,11 @@ export default function Header() {
         </button>
       </Container>
 
-      {/* Mobile navigation panel */}
+      {/* Mobile navigation panel. `inert` while closed keeps its links out of
+          the tab order and hidden from screen readers. */}
       <div
         id="mobile-menu"
+        inert={!open}
         className={cn(
           "overflow-hidden border-t border-navy-100/60 bg-white transition-[max-height] duration-300 ease-in-out lg:hidden",
           open ? "max-h-96" : "max-h-0"

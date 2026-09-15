@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { contactLimits, contactReasons } from "@/lib/site";
 import { cn } from "@/lib/cn";
@@ -333,7 +334,11 @@ export default function ContactForm() {
 
       <p className="text-xs leading-relaxed text-ink-muted">
         By submitting this form you agree to be contacted by Nexomaya Technology Group
-        regarding your inquiry. We will never share your information.
+        regarding your inquiry. We use your information only as described in our{" "}
+        <Link href="/privacy" className="underline underline-offset-4 hover:text-navy">
+          Privacy Policy
+        </Link>
+        .
       </p>
     </form>
   );

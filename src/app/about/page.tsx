@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description:
     "Learn about Nexomaya Technology Group, a company founded in IT and built on technology, people, skills, cooperation, and opportunity.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 const blocks = [
   {

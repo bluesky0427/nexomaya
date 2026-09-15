@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Container from "@/components/Container";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
 import { siteConfig } from "@/lib/site";
 import {
-  MailIcon,
   GlobeIcon,
   PeopleIcon,
   CheckIcon,
@@ -12,12 +12,12 @@ import {
   LocationIcon,
 } from "@/components/Icons";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description:
     "Contact Nexomaya Technology Group to discuss IT consulting, software development, business automation, partnerships, and collaboration.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 const workWith = [
   "Businesses looking for technology solutions",
@@ -95,20 +95,6 @@ export default function ContactPage() {
                           className="font-medium text-navy hover:text-gold-dark"
                         >
                           {siteConfig.domain}
-                        </a>
-                      </dd>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <MailIcon className="mt-0.5 h-5 w-5 shrink-0 text-navy" />
-                    <div>
-                      <dt className="text-ink-muted">Email</dt>
-                      <dd>
-                        <a
-                          href={`mailto:${siteConfig.email}`}
-                          className="font-medium text-navy hover:text-gold-dark"
-                        >
-                          {siteConfig.email}
                         </a>
                       </dd>
                     </div>

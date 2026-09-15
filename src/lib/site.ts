@@ -13,7 +13,6 @@ export const siteConfig = {
   tagline: "Connecting Technology, Human Skill, and Opportunity",
   description:
     "Nexomaya Technology Group connects technology, human skill, and cross-industry collaboration to create new business value and opportunity.",
-  email: "support@nexomaya.com",
   /** Google Appointment Scheduling page for booking a meeting. */
   bookingUrl: "https://calendar.app.google/tk5C6taEbNzapRpw9",
   address: {
@@ -44,15 +43,19 @@ export const navItems: NavItem[] = [
   { label: "Contact", href: "/contact" },
 ];
 
-/** Options shared between the contact form UI and the API validation. */
+/**
+ * Options shared between the contact form UI and the API validation. The first
+ * seven match the service titles in src/lib/content.ts — keep them in sync.
+ */
 export const contactReasons = [
   "IT Consulting",
   "Software Development",
   "Business Automation",
   "Digital Transformation",
-  "Partnership / Collaboration",
-  "Talent / Skill Development",
-  "Other",
+  "Cross-Industry Collaboration",
+  "Talent and Skill Empowerment",
+  "New Business Creation",
+  "General Inquiry",
 ] as const;
 
 export type ContactReason = (typeof contactReasons)[number];

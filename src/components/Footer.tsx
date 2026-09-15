@@ -61,16 +61,6 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <span className="text-navy-200">Email</span>
-                <br />
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="text-navy-100 transition-colors hover:text-white"
-                >
-                  {siteConfig.email}
-                </a>
-              </li>
-              <li>
                 <span className="text-navy-200">Location</span>
                 <br />
                 <a
@@ -113,6 +103,13 @@ export default function Footer() {
           <div className="mt-6 flex flex-col gap-2 text-xs text-navy-200 sm:flex-row sm:items-center sm:justify-between">
             <p>
               © {year} Nexomaya Technology Group. All rights reserved.
+              <span aria-hidden className="mx-2">·</span>
+              <Link
+                href="/privacy"
+                className="transition-colors hover:text-white"
+              >
+                Privacy Policy
+              </Link>
             </p>
             <p>
               Connecting Technology, Human Skill, and Opportunity.

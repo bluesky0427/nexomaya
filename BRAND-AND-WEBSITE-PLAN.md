@@ -61,33 +61,29 @@ We bring together technology and talent across industries, match capability to o
 
 ## 6. Business / Company Structure
 
-Nexomaya Technology Group is organized into six connected divisions. The first three deliver our core technology services; the last three express our broader cross-industry model.
+Nexomaya Technology Group works across seven connected service areas. The first four deliver our core technology services; the last three express our broader cross-industry model. (The live descriptions are in `src/lib/content.ts`.)
 
-| Division | What it does |
+| Service area | What it does |
 |---|---|
-| **Technology Solutions** | Software development, IT systems, infrastructure, and engineering services — the technical foundation of the company. |
-| **Business Automation** | Streamlining and automating workflows, processes, and operations to reduce cost and increase efficiency. |
-| **Digital Transformation** | Helping organizations modernize their systems, data, and ways of working to stay competitive. |
-| **Cross-Industry Collaboration** | Bringing together specialists from different industries to design and build solutions that span more than one field. |
-| **Talent & Skill Empowerment** | Identifying, developing, and connecting skilled people — including those whose abilities are underused — to real opportunities. |
-| **New Business Creation** | Turning combined skills, ideas, and technology into new products, services, and ventures. |
+| **IT Consulting** | Helping businesses understand how technology can support operations, improve efficiency, and create opportunities — practical solutions, clear planning, long-term value. |
+| **Software Development** | Web applications, business systems, internal tools, integrations, and digital platforms. |
+| **Business Automation** | Reducing repetitive manual work through automation, process improvement, and digital workflows. |
+| **Digital Transformation** | Modernizing systems, operations, and ways of working so people, processes, and systems work better together. |
+| **Cross-Industry Collaboration** | Connecting people from different fields and backgrounds to build projects no single field could create alone. |
+| **Talent and Skill Empowerment** | Helping people recognize their abilities, think proactively, and use their skills to create value. |
+| **New Business Creation** | Developing new ideas, projects, and business models by combining technology, people, and execution. |
 
 ---
 
 ## 7. Website Sitemap
 
 ```
-Home
-├── About                (who we are, story, structure, values)
-├── What We Do           (services + the six divisions)
-│   ├── Technology Solutions
-│   ├── Business Automation
-│   ├── Digital Transformation
-│   ├── Cross-Industry Collaboration
-│   ├── Talent & Skill Empowerment
-│   └── New Business Creation
-├── Our Philosophy       (the deeper vision and beliefs)
-└── Contact              (form + details)
+Home                     /
+├── About                /about           (story, purpose, vision)
+├── What We Do           /what-we-do      (the seven service areas + our approach)
+├── Our Philosophy       /our-philosophy  (the deeper vision and beliefs)
+├── Contact              /contact         (form, details, meeting booking)
+└── Privacy Policy       /privacy         (linked from the footer and contact form)
 ```
 
 **Recommended additions (optional, for later growth):**
@@ -100,6 +96,8 @@ Global footer should repeat the main nav plus contact, and a short company state
 ---
 
 ## 8. Page-by-Page Website Content
+
+> **Note:** this section is the original content draft. The live website copy was refined during the build and differs in places (for example, the six divisions became seven service areas). The source of truth for current copy is the page files in `src/app/**/page.tsx` and `src/lib/content.ts`.
 
 ### HOME
 
@@ -117,7 +115,7 @@ Nexomaya Technology Group builds on a foundation of IT and software engineering 
 **2 — Who We Are (short intro)**
 We began in IT, and technology remains our core. But our work goes further: we combine the skills of people from many industries and backgrounds to build solutions, services, and ventures that no single discipline could create alone.
 
-**3 — What We Do (overview grid of the six divisions)**
+**3 — What We Do (overview grid of the service areas)**
 - *Technology Solutions* — Software, systems, and engineering you can rely on.
 - *Business Automation* — Smarter processes, lower cost, higher efficiency.
 - *Digital Transformation* — Modernize how your organization works.
@@ -160,7 +158,7 @@ We believe technology is the combination of human knowledge, tools, systems, and
 **3 — How We Work**
 We operate as a technology-centered company with two strengths working together: dependable technical delivery, and the ability to bring people from different fields into productive collaboration. This lets us solve problems that cross industry lines.
 
-**4 — Our Structure** *(reuse the six-division table from Section 6)*
+**4 — Our Structure** *(reuse the service-area table from Section 6)*
 
 **5 — Our Values** *(reuse the 7 values from Section 4)*
 
@@ -233,7 +231,7 @@ Whether you're a client looking for technology solutions, a business interested 
 **2 — Contact form** *(see Section 11)*
 
 **3 — Direct details**
-- Email: support@nexomaya.com
+- Contact form (no public email address — see Section 13, Step 5b)
 - Location: 2-12-36 Komachi, Kamakura, Kanagawa 248-0006, Japan
 - Book a meeting: Google Appointment Scheduling — https://calendar.app.google/tk5C6taEbNzapRpw9
 - Optional: LinkedIn and other professional channels.
@@ -252,8 +250,9 @@ Whether you're a client looking for technology solutions, a business interested 
   - **Sage** (optional alternate accent): `#3F7D6E` / `#6BA294` — available for variety, used minimally.
   - **Neutrals:** white and the navy-50 tint (`#EAF0F7`) for section backgrounds.
 - **Typography — sans for clarity, serif for gravitas:**
-  - **Headings & UI:** *Inter* (semibold/bold) — clean, modern, highly readable.
-  - **Editorial accents & pull-quotes:** *Playfair Display* (serif) — used for philosophy quotes and statement numbers to add credibility and a considered, established feel.
+  - **Headings (h1–h4) & wordmark:** *Playfair Display* (serif, semibold) — adds credibility and a considered, established feel.
+  - **Body text & UI** (navigation, buttons, forms, eyebrows): *Inter* — clean, modern, highly readable.
+  - **Editorial accents & pull-quotes:** *Playfair Display* — philosophy quotes and statement numbers.
   - No script or decorative fonts.
 - **Layout:** Spacious and grid-based. Generous white space, clear section breaks, large readable headlines, strong visual hierarchy. Card grids for services/divisions. Sticky top navigation. Subtle `fade-up` / `fade-in` entrance animations and soft shadows (`shadow-card`, `shadow-soft`) for depth without noise.
 - **Imagery:** Real, professional photography over generic stock where possible — people of different industries and backgrounds collaborating; technology in real working contexts; clean abstract geometric accents (the site currently uses a tasteful grid/blur motif in the hero instead of stock photos, which keeps it fast and timeless). Avoid clichés (handshakes over globes, glowing brains).
@@ -295,31 +294,34 @@ The company was renamed from **A3 Technology Group** to **Nexomaya Technology Gr
 
 ## 11. Contact Form
 
-**Recommended fields:**
-- Full Name *(required)*
-- Email Address *(required)*
+**Fields (as built — `src/components/ContactForm.tsx`):**
+- Name *(required, max 100 characters)*
+- Email *(required)*
 - Company / Organization *(optional)*
-- Phone Number *(optional)*
-- I am a… *(dropdown: Client · Partner / Collaborator · Professional offering skills · Other)*
-- Subject / Area of Interest *(dropdown: Technology Solutions · Business Automation · Digital Transformation · Collaboration · Talent & Skills · New Business · General Enquiry)*
-- Message *(required, textarea)*
-- Consent checkbox *(required: "I agree to be contacted regarding my enquiry.")*
+- Reason for Contact *(required dropdown: IT Consulting · Software Development · Business Automation · Digital Transformation · Cross-Industry Collaboration · Talent and Skill Empowerment · New Business Creation · General Inquiry)*
+- Message *(required, 10–5,000 characters)*
+- Consent note under the button, linking to the Privacy Policy
 
-**Automatic thank-you message (email or on-screen):**
+**Protection:** hidden honeypot field, rate limits (5 submissions per IP per 10 minutes; 3 confirmation emails per address per hour), and optional Cloudflare Turnstile verification.
+
+**What happens on submit:**
+1. An internal notification ("New contact inquiry: [reason] — [name]") is emailed to `CONTACT_TO_EMAIL`; replying goes straight to the visitor.
+2. The visitor sees "Message received" on screen and receives this automatic email from no-reply@nexomaya.com:
 
 > **Subject:** Thank you for contacting Nexomaya Technology Group
 >
-> Dear [First Name],
+> Hello,
 >
-> Thank you for reaching out to Nexomaya Technology Group. We've received your message, and a member of our team will get back to you shortly.
+> Thank you for contacting Nexomaya Technology Group.
 >
-> We work at the intersection of technology and human skill — connecting people, specialties, and opportunities to create real value. We look forward to learning more about how we can help.
+> We have received your message and appreciate your interest in connecting with us. Our team will review your inquiry and get back to you as soon as possible.
 >
-> If your enquiry is urgent, you can reach us directly at hello@nexomaya.com.
+> Nexomaya Technology Group connects technology, human skill, and opportunity to create new value. We look forward to learning more about how we may work together.
 >
 > Best regards,
-> **The Nexomaya Technology Group Team**
-> nexomaya.com
+> **Nexomaya Technology Group**
+>
+> *This is an automated message, and replies to this address are not received. To add details to your inquiry, please use the contact form.*
 
 ---
 
@@ -370,7 +372,7 @@ In **Project → Settings → Environment Variables**, add the same keys from `.
 | Key | Value |
 |---|---|
 | `RESEND_API_KEY` | your real Resend API key (`re_...`) |
-| `CONTACT_TO_EMAIL` | `support@nexomaya.com` (or an existing inbox until that mailbox exists) |
+| `CONTACT_TO_EMAIL` | an inbox you check, e.g. your Gmail (required) |
 | `CONTACT_FROM_EMAIL` | `no-reply@nexomaya.com` |
 | `CONTACT_THANK_YOU_FROM_EMAIL` | `no-reply@nexomaya.com` |
 | `NEXT_PUBLIC_SITE_URL` | `https://www.nexomaya.com` (the primary domain) |
@@ -393,8 +395,8 @@ Then **redeploy** so the new variables take effect.
 2. Add the records Resend shows in GoDaddy DNS: an `MX` and an SPF `TXT` on `send`, a DKIM `TXT` on `resend._domainkey`, and (recommended) a DMARC `TXT` on `_dmarc`. In GoDaddy's **Name** field type only `send` / `resend._domainkey` — GoDaddy appends `.nexomaya.com` itself.
 3. Click **Verify** in Resend. Once verified, the notification and thank-you emails send live.
 
-### Step 5b — Set up a mailbox for support@nexomaya.com
-Resend only sends. To *receive* enquiries at `support@nexomaya.com`, add a mailbox provider (GoDaddy's Microsoft 365 email, Google Workspace, Zoho Mail) or a forwarding service (e.g. ImprovMX) and add its `MX`/SPF records on `@` in GoDaddy. Until then, set `CONTACT_TO_EMAIL` to an inbox you already use. See README §8.
+### Step 5b — Email: contact form only
+`nexomaya.com` has no mailbox, so the site shows no email address. Visitors use the contact form (delivered to `CONTACT_TO_EMAIL`) or book a meeting. To add a mailbox later, see README §8b.
 
 ### Step 6 — Post-launch checks
 - Visit the live URL; click through all five pages.

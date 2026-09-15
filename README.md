@@ -44,7 +44,10 @@ nexomaya/
     │   ├── what-we-do/page.tsx  # What We Do (services)
     │   ├── our-philosophy/page.tsx
     │   ├── contact/page.tsx     # Contact (form + details)
+    │   ├── privacy/page.tsx     # Privacy Policy (APPI)
     │   ├── not-found.tsx        # Custom 404
+    │   ├── opengraph-image.tsx  # Share preview image (generated at build)
+    │   ├── twitter-image.tsx    # Same image for X
     │   ├── sitemap.ts           # /sitemap.xml
     │   ├── robots.ts            # /robots.txt
     │   ├── manifest.ts          # PWA manifest
@@ -55,6 +58,7 @@ nexomaya/
     │   ├── Header.tsx           # Sticky nav + mobile menu + CTA
     │   ├── Footer.tsx           # Footer on every page
     │   ├── ContactForm.tsx      # Client form with validation + states
+    │   ├── Turnstile.tsx        # Cloudflare Turnstile bot-check widget
     │   ├── PageHero.tsx         # Dark hero band for interior pages
     │   ├── CTASection.tsx       # Reusable closing call-to-action
     │   ├── SectionHeading.tsx   # Eyebrow + title + accent rule
@@ -62,8 +66,10 @@ nexomaya/
     │   ├── Button.tsx           # Link/button with variants
     │   └── Icons.tsx            # Inline SVG icon set (no icon dependency)
     └── lib/
-        ├── site.ts             # Brand strings, nav, contact reasons
+        ├── site.ts             # Brand strings, nav, contact reasons + limits
         ├── content.ts          # Services data (shared across pages)
+        ├── metadata.ts         # Per-page title, canonical, and share tags
+        ├── rate-limit.ts       # In-memory rate limiter for the contact API
         └── cn.ts               # className helper
 ```
 
@@ -243,22 +249,24 @@ your account):
 These records live on the `send` subdomain, so they never conflict with the
 mailbox records below. Then click **Verify** in Resend.
 
-### 8b. Receiving — a mailbox for support@nexomaya.com
+### 8b. Receiving — no @nexomaya.com mailbox (by design)
 
-The site lists **support@nexomaya.com** publicly, the contact form delivers
-enquiries there (`CONTACT_TO_EMAIL`), and the thank-you email tells visitors to
-write to it. Resend only *sends*, so you need an email service that *receives*:
+The domain has **no mailbox**, so mail sent to any `@nexomaya.com` address
+bounces. The site is built around that:
 
-- **A mailbox provider** — e.g. GoDaddy's Microsoft 365 email, Google
-  Workspace, or Zoho Mail. Each gives you `MX` and `TXT` (SPF) records for `@`
-  to add in GoDaddy.
-- **Or email forwarding** to an inbox you already have — e.g. ImprovMX, which
-  forwards `support@nexomaya.com` to your existing address via `MX` records on
-  `@`.
+- Visitors reach the company through the **contact form** (or the meeting
+  booking link). No email address is shown on the site, in the structured data,
+  or in the privacy policy.
+- Form submissions are delivered to `CONTACT_TO_EMAIL` — set it to an inbox you
+  check, such as a Gmail address. The API refuses submissions in production if it
+  is missing.
+- Confirmation emails come from `no-reply@nexomaya.com` and tell visitors that
+  replies aren't received and to use the contact form instead.
 
-Until that is set up, point the contact form at an inbox you already use by
-setting `CONTACT_TO_EMAIL` (in `.env.local` and Vercel) to that address — no code
-change needed.
+If you add a mailbox later (Google Workspace, Microsoft 365, Zoho Mail) or email
+forwarding (e.g. ImprovMX), add its `MX` and SPF `TXT` records on `@` in GoDaddy,
+plus its DKIM record — the domain's DMARC policy is `quarantine`, so mail from
+it without DKIM may land in spam. Then you can show the address on the site again.
 
 > **SPF note:** a hostname may have only **one** SPF `TXT` record. Resend's SPF
 > is on `send`, and your mailbox provider's SPF goes on `@`, so they don't
@@ -269,13 +277,14 @@ change needed.
 
 ## 9. Pages & SEO
 
-| Page          | Route             | Title                                                |
-| ------------- | ----------------- | ---------------------------------------------------- |
-| Home          | `/`               | Nexomaya Technology Group \| Technology, Human Skill...    |
-| About         | `/about`          | About Nexomaya Technology Group                            |
-| What We Do    | `/what-we-do`     | Services \| Nexomaya Technology Group                      |
-| Our Philosophy| `/our-philosophy` | Our Philosophy \| Nexomaya Technology Group                |
-| Contact       | `/contact`        | Contact Nexomaya Technology Group                          |
+| Page           | Route             | Title                                        |
+| -------------- | ----------------- | -------------------------------------------- |
+| Home           | `/`               | Nexomaya Technology Group \| Technology, ... |
+| About          | `/about`          | About \| Nexomaya Technology Group           |
+| What We Do     | `/what-we-do`     | Services \| Nexomaya Technology Group        |
+| Our Philosophy | `/our-philosophy` | Our Philosophy \| Nexomaya Technology Group  |
+| Contact        | `/contact`        | Contact \| Nexomaya Technology Group         |
+| Privacy Policy | `/privacy`        | Privacy Policy \| Nexomaya Technology Group  |
 
 Each page sets its own `title` + `description` via the Next.js Metadata API,
 uses semantic HTML (`<header>`, `<main>`, `<section>`, `<footer>`,

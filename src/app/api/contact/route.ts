@@ -13,7 +13,7 @@ import { createRateLimiter } from "@/lib/rate-limit";
  *      trust the client alone).
  *   2. Reject abuse: honeypot field, per-IP and per-recipient rate limits, and
  *      Cloudflare Turnstile verification when TURNSTILE_SECRET_KEY is set.
- *   3. Send an internal notification email to support@nexomaya.com.
+ *   3. Send an internal notification email to CONTACT_TO_EMAIL.
  *   4. Send an automatic thank-you email to the visitor.
  *
  * Email is sent through Resend (https://resend.com). The API key is read from
@@ -43,7 +43,7 @@ type ContactPayload = {
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const SEND_FAILED_MESSAGE =
-  "We could not send your message right now. Please try again or email us directly at support@nexomaya.com.";
+  "We could not send your message right now. Please try again in a few minutes, or book a meeting with us instead.";
 
 // Each IP may submit 5 times per 10 minutes, and each visitor address may
 // receive at most 3 thank-you emails per hour. The second limit stops the form
@@ -172,27 +172,28 @@ export async function POST(request: Request) {
 
   // Read configuration from environment variables.
   const apiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.CONTACT_TO_EMAIL ?? "support@nexomaya.com";
+  const toEmail = process.env.CONTACT_TO_EMAIL;
   const fromEmail =
     process.env.CONTACT_FROM_EMAIL ?? "no-reply@nexomaya.com";
   const thankYouFrom =
     process.env.CONTACT_THANK_YOU_FROM_EMAIL ??
     "no-reply@nexomaya.com";
 
-  if (!apiKey) {
-    // In production a missing key means enquiries would be silently lost, so
-    // fail loudly and point the visitor to the direct email address instead.
+  if (!apiKey || !toEmail) {
+    // In production missing configuration means enquiries would be silently
+    // lost, so fail loudly instead of pretending the message was sent.
     if (process.env.NODE_ENV === "production") {
       console.error(
-        "[contact] RESEND_API_KEY is not set — cannot deliver contact form " +
-          "submissions. Add it in the Vercel project settings and redeploy."
+        "[contact] RESEND_API_KEY or CONTACT_TO_EMAIL is not set — cannot " +
+          "deliver contact form submissions. Add them in the Vercel project " +
+          "settings and redeploy."
       );
       return NextResponse.json({ error: SEND_FAILED_MESSAGE }, { status: 503 });
     }
 
     // In development, log the submission instead of sending email.
     console.warn(
-      "[contact] RESEND_API_KEY is not set — skipping email send (development only).\n" +
+      "[contact] RESEND_API_KEY or CONTACT_TO_EMAIL is not set — skipping email send (development only).\n" +
         "Submission received:",
       { name, email, company, reason, message }
     );
@@ -300,7 +301,7 @@ Nexomaya Technology Group connects technology, human skill, and opportunity to c
 Best regards,
 Nexomaya Technology Group
 
-This is an automated message from no-reply@nexomaya.com. Please do not reply directly to this email. To reach us, email support@nexomaya.com.`;
+This is an automated message, and replies to this address are not received. To add details to your inquiry, please use the contact form at https://www.nexomaya.com/contact.`;
 
 const THANK_YOU_HTML = `
 <div style="font-family:Arial,Helvetica,sans-serif;color:#1F2933;max-width:600px;margin:0 auto;line-height:1.6;">
@@ -315,6 +316,6 @@ const THANK_YOU_HTML = `
     <p>Nexomaya Technology Group connects technology, human skill, and opportunity to create new value. We look forward to learning more about how we may work together.</p>
     <p style="margin-top:24px;">Best regards,<br/><strong>Nexomaya Technology Group</strong></p>
     <hr style="border:none;border-top:1px solid #E5E9F0;margin:24px 0;" />
-    <p style="font-size:12px;color:#7B8794;">This is an automated message from no-reply@nexomaya.com. Please do not reply directly to this email. To reach us, email <a href="mailto:support@nexomaya.com" style="color:#A9863A;">support@nexomaya.com</a>.</p>
+    <p style="font-size:12px;color:#7B8794;">This is an automated message, and replies to this address are not received. To add details to your inquiry, please use the <a href="https://www.nexomaya.com/contact" style="color:#A9863A;">contact form</a>.</p>
   </div>
 </div>`;
