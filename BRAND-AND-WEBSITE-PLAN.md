@@ -353,18 +353,9 @@ The company was renamed from **A3 Technology Group** to **Nexomaya Technology Gr
 
 The site is a standard Next.js 15 app and is built to deploy on **Vercel** (the platform behind Next.js) with zero extra configuration. Estimated time: ~15 minutes plus DNS propagation.
 
-### Step 1 — Put the code in Git
-The project isn't a git repo yet. Initialise it and push to GitHub (recommended for automatic deploys):
-```bash
-git init
-git add .
-git commit -m "Initial commit: Nexomaya Technology Group website"
-# create an empty repo on github.com first, then:
-git remote add origin https://github.com/<your-account>/nexomaya.git
-git branch -M main
-git push -u origin main
-```
-> `.gitignore` already excludes `node_modules`, `.next`, and `.env.local`, so secrets won't be committed.
+### Step 1 — Put the code in Git ✅
+Done — the code is on GitHub at `bluesky0427/nexomaya` (`main` branch).
+> `.gitignore` excludes `node_modules`, `.next`, and `.env.local`, so secrets aren't committed.
 
 ### Step 2 — Import into Vercel
 1. Sign up / log in at **vercel.com** (use your GitHub account).
@@ -379,25 +370,30 @@ In **Project → Settings → Environment Variables**, add the same keys from `.
 | Key | Value |
 |---|---|
 | `RESEND_API_KEY` | your real Resend API key (`re_...`) |
-| `CONTACT_TO_EMAIL` | `info@nexomaya.com` |
+| `CONTACT_TO_EMAIL` | `support@nexomaya.com` (or an existing inbox until that mailbox exists) |
 | `CONTACT_FROM_EMAIL` | `no-reply@nexomaya.com` |
 | `CONTACT_THANK_YOU_FROM_EMAIL` | `no-reply@nexomaya.com` |
 | `NEXT_PUBLIC_SITE_URL` | `https://nexomaya.com` |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Turnstile site key (optional) |
+| `TURNSTILE_SECRET_KEY` | Cloudflare Turnstile secret key (optional — set together with the site key) |
 
 Then **redeploy** so the new variables take effect.
 
-### Step 4 — Connect the domain `nexomaya.com`
+### Step 4 — Connect the domain `nexomaya.com` (GoDaddy)
 1. In **Project → Settings → Domains**, add `nexomaya.com` **and** `www.nexomaya.com`.
-2. Vercel shows the DNS records to add at your domain registrar:
-   - Apex (`nexomaya.com`) → an **A record** to Vercel's IP (`76.76.21.21`), or follow Vercel's "nameservers" option.
-   - `www` → a **CNAME** to `cname.vercel-dns.com`.
-3. ⚠️ **Do not touch your existing email DNS.** Leave the **MX, SPF, DKIM, and DMARC** records (Google Workspace) exactly as they are — you're only adding website records (A/CNAME) and the separate Resend *sending* records. Email and website DNS live side by side.
-4. SSL/HTTPS is issued automatically by Vercel once DNS resolves (can take a few minutes to a couple of hours).
+2. In **GoDaddy → My Products → Domains → nexomaya.com → DNS**, set the records Vercel shows:
+   - `A` record, name `@` → Vercel's IP (e.g. `76.76.21.21`). **Edit GoDaddy's existing "Parked" `A` record** rather than adding a second one.
+   - `CNAME` record, name `www` → Vercel's target (e.g. `cname.vercel-dns.com`). Edit the existing `www` record.
+   - Remove any GoDaddy **Forwarding** on the domain.
+3. SSL/HTTPS is issued automatically by Vercel once DNS resolves (can take a few minutes to a couple of hours).
 
 ### Step 5 — Verify Resend sending domain (for the contact form)
-1. In the **Resend dashboard**, add and verify `nexomaya.com` as a sending domain.
-2. Resend gives you a **DKIM CNAME** and an **SPF TXT** record (usually on a `send.` subdomain). Add those at your registrar — again, *alongside* your existing Google records, not replacing them.
-3. Once verified, the form's notification email and the automatic thank-you email will send live.
+1. In the **Resend dashboard**, add `nexomaya.com` as a sending domain.
+2. Add the records Resend shows in GoDaddy DNS: an `MX` and an SPF `TXT` on `send`, a DKIM `TXT` on `resend._domainkey`, and (recommended) a DMARC `TXT` on `_dmarc`. In GoDaddy's **Name** field type only `send` / `resend._domainkey` — GoDaddy appends `.nexomaya.com` itself.
+3. Click **Verify** in Resend. Once verified, the notification and thank-you emails send live.
+
+### Step 5b — Set up a mailbox for support@nexomaya.com
+Resend only sends. To *receive* enquiries at `support@nexomaya.com`, add a mailbox provider (GoDaddy's Microsoft 365 email, Google Workspace, Zoho Mail) or a forwarding service (e.g. ImprovMX) and add its `MX`/SPF records on `@` in GoDaddy. Until then, set `CONTACT_TO_EMAIL` to an inbox you already use. See README §8.
 
 ### Step 6 — Post-launch checks
 - Visit the live URL; click through all five pages.

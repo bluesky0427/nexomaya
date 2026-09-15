@@ -145,11 +145,8 @@ To enable email:
 
 1. Create a free account at **https://resend.com**.
 2. **Verify the sending domain** `nexomaya.com` in the Resend
-   dashboard (Domains → Add Domain). Resend gives you DNS records to add —
-   these are **email *sending* records** (a DKIM `CNAME` and an SPF `TXT`,
-   usually on a `send.` subdomain).
-   ⚠️ **Add them alongside — do not replace — your existing Google Workspace
-   records.** (See §8.)
+   dashboard (Domains → Add Domain), then add the DNS records it shows in
+   GoDaddy (see §8). Sending fails until the domain shows as **Verified**.
 3. Create an API key (**API Keys → Create API Key**).
 4. Add it to:
    - **Local:** `.env.local` → `RESEND_API_KEY=re_...`
@@ -188,56 +185,84 @@ Add environment variables with `vercel env add RESEND_API_KEY` (repeat per key).
 
 ---
 
-## 7. Connecting the domain nexomaya.com
+## 7. Connecting the domain nexomaya.com (GoDaddy)
 
-The domain is managed through **Google (Google Workspace / Google Domains
-management)**. You only need to point the **website** records at Vercel.
+`nexomaya.com` is registered at **GoDaddy** and its DNS is managed there. Keep
+GoDaddy's nameservers and edit the records in GoDaddy — you don't need to move
+DNS anywhere else.
+
+Open the DNS editor: **GoDaddy → My Products → Domains → nexomaya.com → DNS**.
 
 1. In Vercel: **Project → Settings → Domains → Add** `nexomaya.com`
    (add `www.nexomaya.com` too).
-2. Vercel shows the exact DNS records to create. Add them in your Google DNS
-   management console:
+2. Vercel shows the exact records to create. In GoDaddy's DNS records:
 
-   | Type    | Name / Host         | Value                        |
-   | ------- | ------------------- | ---------------------------- |
-   | `A`     | `@` (root)          | `76.76.21.21`                |
-   | `CNAME` | `www`               | `cname.vercel-dns.com`       |
+   | Type    | Name  | Value                                                 |
+   | ------- | ----- | ----------------------------------------------------- |
+   | `A`     | `@`   | The IP Vercel shows (e.g. `76.76.21.21`)              |
+   | `CNAME` | `www` | The target Vercel shows (e.g. `cname.vercel-dns.com`) |
 
-   > Always use the **exact values Vercel displays for your project** — the `A`
-   > record IP above is Vercel's standard value but confirm it in your dashboard.
-3. Wait for DNS to propagate (minutes to a few hours). Vercel auto-issues an
-   HTTPS certificate once records resolve.
-4. Set the primary domain and redirect (e.g. `www` → root or vice versa) in
-   Vercel's Domains settings.
+   GoDaddy specifics:
+   - A new GoDaddy domain already has an `A` record for `@` pointing to
+     **"Parked"**, and a `CNAME` for `www`. **Edit those two records** to the
+     Vercel values instead of adding new ones — a leftover parked `A` record
+     sends some visitors to the GoDaddy parking page.
+   - If **Forwarding** is set up for the domain in GoDaddy, remove it.
+   - Always use the **exact values Vercel displays for your project**; Vercel
+     sometimes gives project-specific values instead of the examples above.
+3. Wait for DNS to propagate (minutes to a few hours). Vercel issues the HTTPS
+   certificate automatically once the records resolve.
+4. In Vercel's Domains settings, choose the primary domain and redirect the
+   other (e.g. `www` → root).
 
 ---
 
-## 8. ⚠️ IMPORTANT — Keep Google Workspace email records untouched
+## 8. Email DNS records (GoDaddy)
 
-`nexomaya.com` already uses **Google Workspace for email**. When you
-add the website records above, **only touch the website records** (`A` and
-`CNAME` for `www`). **Do NOT delete, edit, or replace** any of these existing
-email records:
+The domain has no email service yet, so there are no existing email records to
+protect. Two separate things are needed:
 
-- **MX** records (route mail to Google — e.g. `smtp.google.com` /
-  `aspmx.l.google.com`). Removing these **breaks all email** for the domain.
-- **SPF** (`TXT` record containing `v=spf1 include:_spf.google.com ~all`).
-- **DKIM** (`TXT`/`CNAME` record, often named `google._domainkey`).
-- **DMARC** (`TXT` record at `_dmarc`).
+### 8a. Sending — Resend (contact form emails)
 
-Checklist before saving DNS changes:
+After adding `nexomaya.com` in Resend, add the records it shows. They look like
+this (copy the real values from Resend — the DKIM key and region are unique to
+your account):
 
-- [ ] MX records still point to Google — **unchanged**.
-- [ ] SPF / DKIM / DMARC `TXT` records — **unchanged**.
-- [ ] Only **added** the Vercel `A` (root) and `CNAME` (`www`) records.
-- [ ] If you verified a domain in Resend, you **added** its DKIM/SPF records
-      **without modifying** Google's MX or existing SPF.
+| Type  | Name                | Value                                          | Priority |
+| ----- | ------------------- | ---------------------------------------------- | -------- |
+| `MX`  | `send`              | `feedback-smtp.<region>.amazonses.com`         | `10`     |
+| `TXT` | `send`              | `v=spf1 include:amazonses.com ~all`            |          |
+| `TXT` | `resend._domainkey` | `p=MIGfMA0GCSq...` (long DKIM key from Resend) |          |
+| `TXT` | `_dmarc`            | `v=DMARC1; p=none;` (recommended)              |          |
 
-> SPF note: a domain should have **one** SPF `TXT` record. If Resend asks you to
-> authorize its mail, **merge** its `include:` into the existing Google SPF
-> record (e.g. `v=spf1 include:_spf.google.com include:amazonses.com ~all`)
-> rather than adding a second SPF record. Resend's onboarding typically uses a
-> dedicated `send.` subdomain, which avoids touching the root SPF entirely.
+> **GoDaddy tip:** in the **Name** field enter only the part before the domain
+> — `send`, not `send.nexomaya.com`. GoDaddy adds `.nexomaya.com` itself; typing
+> the full name creates `send.nexomaya.com.nexomaya.com` and verification fails.
+
+These records live on the `send` subdomain, so they never conflict with the
+mailbox records below. Then click **Verify** in Resend.
+
+### 8b. Receiving — a mailbox for support@nexomaya.com
+
+The site lists **support@nexomaya.com** publicly, the contact form delivers
+enquiries there (`CONTACT_TO_EMAIL`), and the thank-you email tells visitors to
+write to it. Resend only *sends*, so you need an email service that *receives*:
+
+- **A mailbox provider** — e.g. GoDaddy's Microsoft 365 email, Google
+  Workspace, or Zoho Mail. Each gives you `MX` and `TXT` (SPF) records for `@`
+  to add in GoDaddy.
+- **Or email forwarding** to an inbox you already have — e.g. ImprovMX, which
+  forwards `support@nexomaya.com` to your existing address via `MX` records on
+  `@`.
+
+Until that is set up, point the contact form at an inbox you already use by
+setting `CONTACT_TO_EMAIL` (in `.env.local` and Vercel) to that address — no code
+change needed.
+
+> **SPF note:** a hostname may have only **one** SPF `TXT` record. Resend's SPF
+> is on `send`, and your mailbox provider's SPF goes on `@`, so they don't
+> collide. If you later add another service that sends from `@`, merge its
+> `include:` into the existing `@` SPF record instead of adding a second one.
 
 ---
 
