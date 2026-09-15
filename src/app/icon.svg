@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0B2545"/>
+  <!-- NX monogram: "N" in white, "X" in gold — separate skills meeting
+       and crossing, with the gold accent bar beneath. -->
+  <text x="22" y="42" text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" fill="#ffffff">N</text>
+  <text x="43" y="42" text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" fill="#C8A04D">X</text>
+  <rect x="17" y="50" width="30" height="3" rx="1.5" fill="#C8A04D"/>
+</svg>
