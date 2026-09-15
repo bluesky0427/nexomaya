@@ -213,7 +213,8 @@ Open the DNS editor: **GoDaddy → My Products → Domains → nexomaya.com → 
 3. Wait for DNS to propagate (minutes to a few hours). Vercel issues the HTTPS
    certificate automatically once the records resolve.
 4. In Vercel's Domains settings, choose the primary domain and redirect the
-   other (e.g. `www` → root).
+   other. This site uses **`www.nexomaya.com` as primary** (`nexomaya.com`
+   redirects to it), so `NEXT_PUBLIC_SITE_URL` is `https://www.nexomaya.com`.
 
 ---
 

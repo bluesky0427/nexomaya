@@ -54,7 +54,7 @@ export default function Footer() {
                 <span className="text-navy-200">Website</span>
                 <br />
                 <a
-                  href={`https://${siteConfig.domain}`}
+                  href={siteConfig.url}
                   className="text-navy-100 transition-colors hover:text-white"
                 >
                   {siteConfig.domain}

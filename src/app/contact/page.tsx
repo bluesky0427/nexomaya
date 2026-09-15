@@ -91,7 +91,7 @@ export default function ContactPage() {
                       <dt className="text-ink-muted">Website</dt>
                       <dd>
                         <a
-                          href={`https://${siteConfig.domain}`}
+                          href={siteConfig.url}
                           className="font-medium text-navy hover:text-gold-dark"
                         >
                           {siteConfig.domain}

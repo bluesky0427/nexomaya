@@ -373,7 +373,7 @@ In **Project → Settings → Environment Variables**, add the same keys from `.
 | `CONTACT_TO_EMAIL` | `support@nexomaya.com` (or an existing inbox until that mailbox exists) |
 | `CONTACT_FROM_EMAIL` | `no-reply@nexomaya.com` |
 | `CONTACT_THANK_YOU_FROM_EMAIL` | `no-reply@nexomaya.com` |
-| `NEXT_PUBLIC_SITE_URL` | `https://nexomaya.com` |
+| `NEXT_PUBLIC_SITE_URL` | `https://www.nexomaya.com` (the primary domain) |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Turnstile site key (optional) |
 | `TURNSTILE_SECRET_KEY` | Cloudflare Turnstile secret key (optional — set together with the site key) |
 
@@ -385,7 +385,8 @@ Then **redeploy** so the new variables take effect.
    - `A` record, name `@` → Vercel's IP (e.g. `76.76.21.21`). **Edit GoDaddy's existing "Parked" `A` record** rather than adding a second one.
    - `CNAME` record, name `www` → Vercel's target (e.g. `cname.vercel-dns.com`). Edit the existing `www` record.
    - Remove any GoDaddy **Forwarding** on the domain.
-3. SSL/HTTPS is issued automatically by Vercel once DNS resolves (can take a few minutes to a couple of hours).
+3. Make `www.nexomaya.com` the primary domain (connected to Production) and redirect `nexomaya.com` to it. Keep `NEXT_PUBLIC_SITE_URL` set to `https://www.nexomaya.com` to match.
+4. SSL/HTTPS is issued automatically by Vercel once DNS resolves (can take a few minutes to a couple of hours).
 
 ### Step 5 — Verify Resend sending domain (for the contact form)
 1. In the **Resend dashboard**, add `nexomaya.com` as a sending domain.
@@ -398,7 +399,7 @@ Resend only sends. To *receive* enquiries at `support@nexomaya.com`, add a mailb
 ### Step 6 — Post-launch checks
 - Visit the live URL; click through all five pages.
 - Submit the contact form with a real email and confirm both the internal notification and the thank-you email arrive.
-- Check `https://nexomaya.com/sitemap.xml` and `/robots.txt` resolve.
+- Check `https://www.nexomaya.com/sitemap.xml` and `/robots.txt` resolve.
 - (Optional) Submit the sitemap in **Google Search Console** to start indexing.
 
 ### Ongoing
