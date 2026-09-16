@@ -277,15 +277,15 @@ function buildNotificationHtml(data: {
   const esc = (s: string) =>
     s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   return `
-  <div style="font-family:Arial,Helvetica,sans-serif;color:#1F2933;max-width:600px;margin:0 auto;">
-    <h2 style="color:#0B2545;">New contact inquiry</h2>
+  <div style="font-family:Arial,Helvetica,sans-serif;color:#1F2419;max-width:600px;margin:0 auto;">
+    <h2 style="color:#3C4624;">New contact inquiry</h2>
     <table style="width:100%;border-collapse:collapse;font-size:14px;">
-      <tr><td style="padding:6px 0;color:#7B8794;width:120px;">Name</td><td style="padding:6px 0;font-weight:bold;">${esc(data.name)}</td></tr>
-      <tr><td style="padding:6px 0;color:#7B8794;">Email</td><td style="padding:6px 0;"><a href="mailto:${esc(data.email)}">${esc(data.email)}</a></td></tr>
-      <tr><td style="padding:6px 0;color:#7B8794;">Company</td><td style="padding:6px 0;">${esc(data.company || "—")}</td></tr>
-      <tr><td style="padding:6px 0;color:#7B8794;">Reason</td><td style="padding:6px 0;">${esc(data.reason)}</td></tr>
+      <tr><td style="padding:6px 0;color:#6A7261;width:120px;">Name</td><td style="padding:6px 0;font-weight:bold;">${esc(data.name)}</td></tr>
+      <tr><td style="padding:6px 0;color:#6A7261;">Email</td><td style="padding:6px 0;"><a href="mailto:${esc(data.email)}">${esc(data.email)}</a></td></tr>
+      <tr><td style="padding:6px 0;color:#6A7261;">Company</td><td style="padding:6px 0;">${esc(data.company || "—")}</td></tr>
+      <tr><td style="padding:6px 0;color:#6A7261;">Reason</td><td style="padding:6px 0;">${esc(data.reason)}</td></tr>
     </table>
-    <h3 style="color:#0B2545;margin-top:24px;">Message</h3>
+    <h3 style="color:#3C4624;margin-top:24px;">Message</h3>
     <p style="white-space:pre-wrap;line-height:1.6;">${esc(data.message)}</p>
   </div>`;
 }
@@ -304,18 +304,18 @@ Nexomaya Technology Group
 This is an automated message, and replies to this address are not received. To add details to your inquiry, please use the contact form at https://www.nexomaya.com/contact.`;
 
 const THANK_YOU_HTML = `
-<div style="font-family:Arial,Helvetica,sans-serif;color:#1F2933;max-width:600px;margin:0 auto;line-height:1.6;">
-  <div style="background:#0B2545;padding:28px 24px;border-radius:12px 12px 0 0;">
+<div style="font-family:Arial,Helvetica,sans-serif;color:#1F2419;max-width:600px;margin:0 auto;line-height:1.6;">
+  <div style="background:#3C4624;padding:28px 24px;border-radius:12px 12px 0 0;">
     <h1 style="color:#ffffff;margin:0;font-size:20px;">Nexomaya Technology Group</h1>
-    <p style="color:#C8A04D;margin:6px 0 0;font-size:13px;">Connecting Technology, Human Skill, and Opportunity</p>
+    <p style="color:#D8B871;margin:6px 0 0;font-size:13px;">Connecting Technology, Human Skill, and Opportunity</p>
   </div>
-  <div style="padding:28px 24px;border:1px solid #E5E9F0;border-top:none;border-radius:0 0 12px 12px;">
+  <div style="padding:28px 24px;border:1px solid #E6EBD8;border-top:none;border-radius:0 0 12px 12px;">
     <p>Hello,</p>
     <p>Thank you for contacting Nexomaya Technology Group.</p>
     <p>We have received your message and appreciate your interest in connecting with us. Our team will review your inquiry and get back to you as soon as possible.</p>
     <p>Nexomaya Technology Group connects technology, human skill, and opportunity to create new value. We look forward to learning more about how we may work together.</p>
     <p style="margin-top:24px;">Best regards,<br/><strong>Nexomaya Technology Group</strong></p>
-    <hr style="border:none;border-top:1px solid #E5E9F0;margin:24px 0;" />
-    <p style="font-size:12px;color:#7B8794;">This is an automated message, and replies to this address are not received. To add details to your inquiry, please use the <a href="https://www.nexomaya.com/contact" style="color:#A9863A;">contact form</a>.</p>
+    <hr style="border:none;border-top:1px solid #E6EBD8;margin:24px 0;" />
+    <p style="font-size:12px;color:#6A7261;">This is an automated message, and replies to this address are not received. To add details to your inquiry, please use the <a href="https://www.nexomaya.com/contact" style="color:#8A6524;">contact form</a>.</p>
   </div>
 </div>`;

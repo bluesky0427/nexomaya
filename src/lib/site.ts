@@ -6,7 +6,7 @@
 
 export const siteConfig = {
   name: "Nexomaya Technology Group",
-  shortName: "NX",
+  shortName: "Nexomaya",
   domain: "nexomaya.com",
   url:
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.nexomaya.com",

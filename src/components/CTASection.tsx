@@ -23,7 +23,7 @@ export default function CTASection({
   secondaryLabel,
 }: CTASectionProps) {
   return (
-    <section className="relative overflow-hidden bg-navy py-20 md:py-24">
+    <section className="relative overflow-hidden bg-forest py-20 md:py-24">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-10"
@@ -38,7 +38,7 @@ export default function CTASection({
           {title}
         </h2>
         {body && (
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-navy-100">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-forest-100">
             {body}
           </p>
         )}
@@ -53,7 +53,7 @@ export default function CTASection({
           )}
         </div>
         {closing && (
-          <p className="mt-12 font-serif text-2xl text-gold-light">{closing}</p>
+          <p className="mt-12 font-serif text-2xl text-ochre-light">{closing}</p>
         )}
       </Container>
     </section>

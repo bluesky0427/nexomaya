@@ -25,22 +25,22 @@ const sections: { title: string; body: React.ReactNode }[] = [
     title: "1. Business Operator",
     body: (
       <dl className="grid gap-2 sm:grid-cols-[12rem_1fr]">
-        <dt className="font-medium text-navy">Company</dt>
+        <dt className="font-medium text-forest">Company</dt>
         <dd>{siteConfig.name}</dd>
-        <dt className="font-medium text-navy">Address</dt>
+        <dt className="font-medium text-forest">Address</dt>
         <dd>{siteConfig.address.full}</dd>
-        <dt className="font-medium text-navy">Representative</dt>
+        <dt className="font-medium text-forest">Representative</dt>
         <dd>
           Provided without delay upon request through our{" "}
-          <Link href="/contact" className="text-navy underline underline-offset-4 hover:text-gold-dark">
+          <Link href="/contact" className="text-forest underline underline-offset-4 hover:text-ochre-dark">
             contact form
           </Link>
           .
         </dd>
-        <dt className="font-medium text-navy">Contact</dt>
+        <dt className="font-medium text-forest">Contact</dt>
         <dd>
           Our{" "}
-          <Link href="/contact" className="text-navy underline underline-offset-4 hover:text-gold-dark">
+          <Link href="/contact" className="text-forest underline underline-offset-4 hover:text-ochre-dark">
             contact form
           </Link>
         </dd>
@@ -52,14 +52,14 @@ const sections: { title: string; body: React.ReactNode }[] = [
     body: (
       <>
         <p>
-          <strong className="text-navy">Information you give us.</strong> When
+          <strong className="text-forest">Information you give us.</strong> When
           you use our contact form, we collect your name, email address,
           company or organization (optional), reason for contact, and message.
           If you book a meeting or correspond with us, we receive the
           information you include.
         </p>
         <p>
-          <strong className="text-navy">Technical information.</strong> When
+          <strong className="text-forest">Technical information.</strong> When
           you visit the site or submit the form, our hosting provider
           processes your IP address, browser type, and request details. We use
           your IP address briefly to limit repeated form submissions, and, where
@@ -96,20 +96,20 @@ const sections: { title: string; body: React.ReactNode }[] = [
         </p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            <strong className="text-navy">Website hosting</strong> — Vercel Inc.
+            <strong className="text-forest">Website hosting</strong> — Vercel Inc.
             (United States)
           </li>
           <li>
-            <strong className="text-navy">Email delivery</strong> — Resend, which
+            <strong className="text-forest">Email delivery</strong> — Resend, which
             sends form notifications and confirmation emails using Amazon Web
             Services (United States)
           </li>
           <li>
-            <strong className="text-navy">Receiving and replying to inquiries</strong>{" "}
+            <strong className="text-forest">Receiving and replying to inquiries</strong>{" "}
             — Google LLC (Gmail, United States)
           </li>
           <li>
-            <strong className="text-navy">Bot protection</strong> (where enabled)
+            <strong className="text-forest">Bot protection</strong> (where enabled)
             — Cloudflare, Inc. (United States)
           </li>
         </ul>
@@ -165,7 +165,7 @@ const sections: { title: string; body: React.ReactNode }[] = [
         personal information we hold about you, or to stop providing it to third
         parties, as provided by Japan&rsquo;s Act on the Protection of Personal
         Information. Please send your request through our{" "}
-        <Link href="/contact" className="text-navy underline underline-offset-4 hover:text-gold-dark">
+        <Link href="/contact" className="text-forest underline underline-offset-4 hover:text-ochre-dark">
           contact form
         </Link>
         . We will confirm your identity before responding and reply within a
@@ -217,9 +217,9 @@ export default function PrivacyPage() {
                 </div>
               ))}
             </div>
-            <p className="mt-16 border-t border-navy-100 pt-8 text-ink-light">
+            <p className="mt-16 border-t border-forest-100 pt-8 text-ink-light">
               Questions about this policy?{" "}
-              <Link href="/contact" className="font-semibold text-navy hover:text-gold-dark">
+              <Link href="/contact" className="font-semibold text-forest hover:text-ochre-dark">
                 Contact us
               </Link>
               .

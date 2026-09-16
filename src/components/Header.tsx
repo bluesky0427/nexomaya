@@ -3,49 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { navItems, siteConfig } from "@/lib/site";
+import { navItems } from "@/lib/site";
 import { cn } from "@/lib/cn";
 import Container from "./Container";
-
-/** Brand wordmark used in the header and footer. */
-function Logo({ light = false }: { light?: boolean }) {
-  return (
-    <Link
-      href="/"
-      className="group inline-flex items-center gap-3"
-      aria-label={`${siteConfig.name} — home`}
-    >
-      <span
-        className={cn(
-          "flex h-10 w-10 items-center justify-center rounded-lg font-serif text-lg font-bold transition-colors",
-          light
-            ? "bg-white text-navy"
-            : "bg-navy text-white group-hover:bg-navy-700"
-        )}
-      >
-        NX
-      </span>
-      <span className="flex flex-col leading-none">
-        <span
-          className={cn(
-            "font-serif text-base font-semibold tracking-tight",
-            light ? "text-white" : "text-navy"
-          )}
-        >
-          Nexomaya Technology Group
-        </span>
-        <span
-          className={cn(
-            "mt-0.5 text-[10px] font-medium uppercase tracking-[0.18em]",
-            light ? "text-navy-100" : "text-ink-muted"
-          )}
-        >
-          Technology · Skill · Opportunity
-        </span>
-      </span>
-    </Link>
-  );
-}
+import Logo from "./Logo";
 
 export default function Header() {
   const pathname = usePathname();
@@ -73,7 +34,7 @@ export default function Header() {
       className={cn(
         "sticky top-0 z-50 border-b transition-all duration-200",
         scrolled
-          ? "border-navy-100/60 bg-white/90 backdrop-blur-md shadow-sm"
+          ? "border-forest-100/60 bg-white/90 backdrop-blur-md shadow-sm"
           : "border-transparent bg-white"
       )}
     >
@@ -92,13 +53,13 @@ export default function Header() {
               className={cn(
                 "relative rounded-full px-4 py-2 text-sm font-medium transition-colors",
                 isActive(item.href)
-                  ? "text-navy"
-                  : "text-ink-light hover:text-navy"
+                  ? "text-forest"
+                  : "text-ink-light hover:text-forest"
               )}
             >
               {item.label}
               {isActive(item.href) && (
-                <span className="absolute inset-x-4 -bottom-0.5 h-0.5 rounded-full bg-gold" />
+                <span className="absolute inset-x-4 -bottom-0.5 h-0.5 rounded-full bg-ochre" />
               )}
             </Link>
           ))}
@@ -107,7 +68,7 @@ export default function Header() {
         <div className="hidden lg:block">
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center rounded-full bg-navy px-6 py-2.5 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:bg-navy-700"
+            className="inline-flex items-center justify-center rounded-full bg-forest px-6 py-2.5 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:bg-forest-700"
           >
             Contact Us
           </Link>
@@ -117,7 +78,7 @@ export default function Header() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-navy transition-colors hover:bg-navy-50 lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-forest transition-colors hover:bg-forest-50 lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label="Toggle navigation menu"
@@ -152,7 +113,7 @@ export default function Header() {
         id="mobile-menu"
         inert={!open}
         className={cn(
-          "overflow-hidden border-t border-navy-100/60 bg-white transition-[max-height] duration-300 ease-in-out lg:hidden",
+          "overflow-hidden border-t border-forest-100/60 bg-white transition-[max-height] duration-300 ease-in-out lg:hidden",
           open ? "max-h-96" : "max-h-0"
         )}
       >
@@ -164,8 +125,8 @@ export default function Header() {
               className={cn(
                 "rounded-lg px-4 py-3 text-base font-medium transition-colors",
                 isActive(item.href)
-                  ? "bg-navy-50 text-navy"
-                  : "text-ink-light hover:bg-navy-50 hover:text-navy"
+                  ? "bg-forest-50 text-forest"
+                  : "text-ink-light hover:bg-forest-50 hover:text-forest"
               )}
             >
               {item.label}
@@ -173,7 +134,7 @@ export default function Header() {
           ))}
           <Link
             href="/contact"
-            className="mt-2 inline-flex items-center justify-center rounded-full bg-navy px-6 py-3 text-sm font-semibold text-white"
+            className="mt-2 inline-flex items-center justify-center rounded-full bg-forest px-6 py-3 text-sm font-semibold text-white"
           >
             Contact Us
           </Link>

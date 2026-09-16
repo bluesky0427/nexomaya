@@ -78,8 +78,8 @@ export default function AboutPage() {
       </section>
 
       {/* Alternating story blocks */}
-      <section className="border-t border-navy-100 bg-navy-50/50">
-        <Container className="divide-y divide-navy-100">
+      <section className="border-t border-forest-100 bg-forest-50/50">
+        <Container className="divide-y divide-forest-100">
           {blocks.map((block) => (
             <div
               key={block.title}

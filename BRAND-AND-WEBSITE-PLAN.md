@@ -243,17 +243,20 @@ Whether you're a client looking for technology solutions, a business interested 
 > **This is the identity actually implemented on the live site.** The palette and type below match the built Next.js codebase (`tailwind.config.ts`), so the document and the website stay in sync.
 
 - **Tone:** Professional, confident, modern, and clear. Inspiring but grounded — never charity-like, never exaggerated. Speaks to business value first, with philosophy as the backbone.
-- **Color palette — deep navy base with a refined gold accent:**
-  - **Navy** (primary): `#0B2545` (DEFAULT) deepening to `#071A33` (900) and lightening to `#EAF0F7` (50). Carries authority, trust, and the technology foundation. Used for hero backgrounds, headings, and primary buttons.
-  - **Gold** (accent): `#C8A04D` (DEFAULT), `#DDBE7E` (light), `#A9863A` (dark). Used *sparingly* — eyebrows, icons, key highlights, the "human / opportunity" thread. Gold is the warmth against the navy.
-  - **Ink** (text): `#1F2933` (body), `#52606D` (light), `#7B8794` (muted).
-  - **Sage** (optional alternate accent): `#3F7D6E` / `#6BA294` — available for variety, used minimally.
-  - **Neutrals:** white and the navy-50 tint (`#EAF0F7`) for section backgrounds.
+- **Color palette — olive green base with a warm ochre accent.** The palette is derived directly from the logo artwork, so the mark reads as native to the site rather than applied on top of it:
+  - **Forest** (primary): `#3C4624` (DEFAULT / 800) — *the exact ink colour of the logo* — deepening to `#2B331A` (900) and lightening to `#F5F7EF` (50). Grounded, natural, and confident. Used for hero backgrounds, headings, and primary buttons.
+  - **Ochre** (accent): `#B8893A` (DEFAULT), `#D8B871` (light), `#8A6524` (dark). Used *sparingly* — eyebrows, icons, key highlights, the "human / opportunity" thread. Ochre is the warmth against the olive.
+  - **Cream** (brand neutral): `#F9F5EE` — the logo's own ground, used for warm off-white surfaces.
+  - **Ink** (text): `#1F2419` (body), `#4B5340` (light), `#6A7261` (muted). Green-tinted rather than blue-tinted so body copy sits in the same family as the brand.
+  - **Sage** (feedback only): `#2F6B54` / `#6BA294` — reserved for success and confirmation states. Deliberately cooler than the brand olive so it reads as feedback, not branding.
+  - **Neutrals:** white and the forest-50 tint (`#F5F7EF`) for section backgrounds.
+  - **Contrast:** every text colour meets WCAG AA against its intended background. Note `ochre-dark` (`#8A6524`, 5.29:1 on white) is the accent used for small text such as eyebrows; `ochre` DEFAULT is for graphic elements only.
 - **Typography — sans for clarity, serif for gravitas:**
-  - **Headings (h1–h4) & wordmark:** *Playfair Display* (serif, semibold) — adds credibility and a considered, established feel.
+  - **Headings (h1–h4):** *Playfair Display* (serif, semibold) — adds credibility and a considered, established feel.
   - **Body text & UI** (navigation, buttons, forms, eyebrows): *Inter* — clean, modern, highly readable.
   - **Editorial accents & pull-quotes:** *Playfair Display* — philosophy quotes and statement numbers.
-  - No script or decorative fonts.
+  - **Wordmark:** brush-lettered artwork, never type. See §9b.
+  - No script or decorative fonts anywhere else — the brush wordmark is the only script element on the site, which is what keeps it distinctive.
 - **Layout:** Spacious and grid-based. Generous white space, clear section breaks, large readable headlines, strong visual hierarchy. Card grids for services/divisions. Sticky top navigation. Subtle `fade-up` / `fade-in` entrance animations and soft shadows (`shadow-card`, `shadow-soft`) for depth without noise.
 - **Imagery:** Real, professional photography over generic stock where possible — people of different industries and backgrounds collaborating; technology in real working contexts; clean abstract geometric accents (the site currently uses a tasteful grid/blur motif in the hero instead of stock photos, which keeps it fast and timeless). Avoid clichés (handshakes over globes, glowing brains).
 - **Overall brand feeling:** A serious, established technology company with a forward-looking, human-centered vision — credible to enterprise clients, inviting to collaborators, and inspiring to individuals.
@@ -266,11 +269,27 @@ The company was renamed from **A3 Technology Group** to **Nexomaya Technology Gr
 
 **Meaning of the name:** *[To be written — add the one-line story behind "Nexomaya" here, and reuse it on the About page.]*
 
-**Logo direction:**
-- **Wordmark:** "Nexomaya" set in the site serif (Playfair Display) or a strong geometric sans, with "TECHNOLOGY GROUP" in spaced uppercase beneath or beside it.
-- **Monogram / mark:** **NX** — a white "N" with a gold "X" on a navy square. The crossing strokes of the X suggest separate skills meeting and combining. A subtle gold accent bar ties it to the palette.
-- **Usage:** navy mark on light backgrounds; white (or white + gold) mark on the navy hero. Keep clear space around it; avoid gradients or 3D effects — flat and confident.
-- **Favicon/app icon:** the **NX** monogram in navy/gold lives at `src/app/icon.svg` and is referenced by the web manifest (`src/app/manifest.ts`). Replace it with the final logo file when one is ready.
+**The logo (final, implemented).** The master artwork is `brand/logo-source.webp` — a horizontal lockup of a pictorial mark and a hand-brushed wordmark, in olive `#3C4624` on cream `#F9F5EE`.
+
+- **Mark:** five stylised figures forming a hexagon, joined by a network line running through them. People and connection first, technology as the thread between them.
+- **Wordmark:** "NexoMaya" in brush script. Hand-lettered artwork, not a typeface — it is the single deliberate exception to the "no script fonts" rule below, and it is never re-set in type.
+- **Usage:** olive artwork on light backgrounds; cream artwork on forest-800/900 backgrounds. Keep clear space around it; never recolour, stretch, add gradients, or place the olive version on a dark ground.
+
+**Generated assets.** All variants are produced from the master by `npm run build:logo` (`scripts/build-logo-assets.cjs`) — do not hand-edit the PNGs, and re-run the script after replacing the master.
+
+| File | Use |
+| --- | --- |
+| `public/logo.png` / `logo-light.png` | Full lockup, olive / cream |
+| `public/logo-mark.png` / `-light` | Mark alone (header, favicon source) |
+| `public/logo-wordmark.png` / `-light` | Wordmark alone |
+| `src/app/icon.png`, `apple-icon.png` | Favicon and Apple touch icon |
+| `public/icon-192/512/-maskable-512.png` | Web manifest icons |
+
+The assets are transparent PNGs rather than SVG on purpose: the brush strokes carry a dry-brush texture that vector tracing would flatten. The cut-outs derive alpha from the source's luminance, which preserves that texture on any background.
+
+**Favicon:** the mark in cream on a brand-olive rounded square (`src/app/icon.png`, referenced by `src/app/manifest.ts`). The logo's two colours are inverted here so the mark stays legible against both light and dark browser chrome at 32px.
+
+**Header lockup:** the mark and wordmark are placed as separate images by `src/components/Logo.tsx` so "TECHNOLOGY GROUP" can sit directly beneath the wordmark. The same component serves the footer via its `light` prop.
 
 ---
 

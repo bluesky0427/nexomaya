@@ -18,24 +18,24 @@
   h2,
   h3,
   h4 {
-    @apply font-serif tracking-tight text-navy;
+    @apply font-serif tracking-tight text-forest;
     text-wrap: balance;
   }
 
   ::selection {
-    @apply bg-navy text-white;
+    @apply bg-forest text-white;
   }
 }
 
 @layer components {
   /* Reusable section eyebrow label */
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark;
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-ochre-dark;
   }
 
-  /* Gold underline accent used under headings */
+  /* Ochre underline accent used under headings */
   .accent-rule {
-    @apply h-1 w-14 rounded-full bg-gold;
+    @apply h-1 w-14 rounded-full bg-ochre;
   }
 
   /* Body prose used inside long-form content pages */

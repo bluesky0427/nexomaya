@@ -33,7 +33,7 @@ export default function HomePage() {
   return (
     <>
       {/* 1. Hero */}
-      <section className="relative overflow-hidden bg-navy-900 text-white">
+      <section className="relative overflow-hidden bg-forest-900 text-white">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-[0.07]"
@@ -45,25 +45,25 @@ export default function HomePage() {
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-40 -top-24 h-[28rem] w-[28rem] rounded-full bg-gold/20 blur-3xl"
+          className="pointer-events-none absolute -right-40 -top-24 h-[28rem] w-[28rem] rounded-full bg-ochre/20 blur-3xl"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-48 -left-32 h-[28rem] w-[28rem] rounded-full bg-navy-500/40 blur-3xl"
+          className="pointer-events-none absolute -bottom-48 -left-32 h-[28rem] w-[28rem] rounded-full bg-forest-500/40 blur-3xl"
         />
 
         <Container className="relative py-24 md:py-32">
           <div className="max-w-3xl animate-fade-up">
-            <span className="eyebrow text-gold-light">
+            <span className="eyebrow text-ochre-light">
               Technology · Human Skill · Opportunity
             </span>
             <h1 className="mt-6 text-5xl font-semibold leading-[1.05] text-white md:text-6xl lg:text-7xl">
               Nexomaya Technology Group
             </h1>
-            <p className="mt-6 text-xl font-medium text-gold-light md:text-2xl">
+            <p className="mt-6 text-xl font-medium text-ochre-light md:text-2xl">
               Connecting Technology, Human Skill, and Opportunity
             </p>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-navy-100">
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-forest-100">
               Nexomaya Technology Group began in the IT industry and grew with
               technology at its core. Today, our mission reaches beyond IT
               alone. We connect people, skills, industries, and ideas to create
@@ -106,7 +106,7 @@ export default function HomePage() {
               <div className="mt-8">
                 <Link
                   href="/about"
-                  className="inline-flex items-center gap-2 font-semibold text-navy transition-colors hover:text-gold-dark"
+                  className="inline-flex items-center gap-2 font-semibold text-forest transition-colors hover:text-ochre-dark"
                 >
                   Read our story
                   <span aria-hidden>→</span>
@@ -116,19 +116,19 @@ export default function HomePage() {
 
             {/* Stat / value panel */}
             <div className="relative">
-              <div className="rounded-2xl border border-navy-100 bg-navy-50/50 p-8 shadow-card md:p-10">
-                <p className="font-serif text-2xl leading-snug text-navy">
+              <div className="rounded-2xl border border-forest-100 bg-forest-50/50 p-8 shadow-card md:p-10">
+                <p className="font-serif text-2xl leading-snug text-forest">
                   “Technology is the practical use of knowledge, skill, tools,
                   systems, and cooperation to solve problems and create value.”
                 </p>
-                <div className="mt-8 grid grid-cols-3 gap-6 border-t border-navy-100 pt-8">
+                <div className="mt-8 grid grid-cols-3 gap-6 border-t border-forest-100 pt-8">
                   {[
                     { k: "IT", v: "Our foundation" },
                     { k: "People", v: "Our strength" },
                     { k: "Value", v: "Our purpose" },
                   ].map((item) => (
                     <div key={item.k}>
-                      <div className="font-serif text-2xl font-semibold text-gold-dark">
+                      <div className="font-serif text-2xl font-semibold text-ochre-dark">
                         {item.k}
                       </div>
                       <div className="mt-1 text-sm text-ink-light">
@@ -144,7 +144,7 @@ export default function HomePage() {
       </section>
 
       {/* 3. What We Believe */}
-      <section className="bg-navy-50/60 py-20 md:py-28">
+      <section className="bg-forest-50/60 py-20 md:py-28">
         <Container>
           <SectionHeading
             eyebrow="What We Believe"
@@ -156,9 +156,9 @@ export default function HomePage() {
             {beliefs.map((b) => (
               <div
                 key={b.title}
-                className="rounded-2xl border border-navy-100 bg-white p-8 shadow-card transition-shadow hover:shadow-soft"
+                className="rounded-2xl border border-forest-100 bg-white p-8 shadow-card transition-shadow hover:shadow-soft"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy text-gold-light">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-forest text-ochre-light">
                   <b.icon className="h-6 w-6" />
                 </div>
                 <h3 className="mt-6 text-xl font-semibold">{b.title}</h3>
@@ -187,13 +187,13 @@ export default function HomePage() {
             {services.map((service) => (
               <div
                 key={service.title}
-                className="group flex items-start gap-4 rounded-xl border border-navy-100 bg-white p-6 transition-all hover:border-gold/50 hover:shadow-card"
+                className="group flex items-start gap-4 rounded-xl border border-forest-100 bg-white p-6 transition-all hover:border-ochre/50 hover:shadow-card"
               >
-                <div className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-navy-50 text-navy transition-colors group-hover:bg-navy group-hover:text-gold-light">
+                <div className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-forest-50 text-forest transition-colors group-hover:bg-forest group-hover:text-ochre-light">
                   <service.icon className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-navy">
+                  <h3 className="text-base font-semibold text-forest">
                     {service.title}
                   </h3>
                 </div>
@@ -204,7 +204,7 @@ export default function HomePage() {
       </section>
 
       {/* 5. Our Mission */}
-      <section className="bg-navy-900 py-20 text-white md:py-28">
+      <section className="bg-forest-900 py-20 text-white md:py-28">
         <Container>
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             <SectionHeading
@@ -213,13 +213,13 @@ export default function HomePage() {
               light
             />
             <div className="space-y-6">
-              <p className="text-lg leading-relaxed text-navy-100">
+              <p className="text-lg leading-relaxed text-forest-100">
                 We guide individuals to think proactively, recognize their
                 abilities, and create opportunities for their own future. We
                 help businesses connect technology with people, ideas, and
                 practical execution.
               </p>
-              <p className="text-lg leading-relaxed text-navy-100">
+              <p className="text-lg leading-relaxed text-forest-100">
                 Through this, Nexomaya Technology Group aims to create wealth,
                 opportunity, and lasting value for society.
               </p>
@@ -230,8 +230,8 @@ export default function HomePage() {
                   "Create opportunity and lasting value for society",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-gold-light" />
-                    <span className="text-navy-100">{item}</span>
+                    <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-ochre-light" />
+                    <span className="text-forest-100">{item}</span>
                   </li>
                 ))}
               </ul>

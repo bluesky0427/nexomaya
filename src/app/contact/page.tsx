@@ -49,8 +49,8 @@ export default function ContactPage() {
               </p>
 
               <div className="mt-10">
-                <h2 className="flex items-center gap-3 text-lg font-semibold text-navy">
-                  <PeopleIcon className="h-5 w-5 text-gold-dark" />
+                <h2 className="flex items-center gap-3 text-lg font-semibold text-forest">
+                  <PeopleIcon className="h-5 w-5 text-ochre-dark" />
                   Work With Us
                 </h2>
                 <p className="mt-3 text-sm text-ink-light">
@@ -59,7 +59,7 @@ export default function ContactPage() {
                 <ul className="mt-4 space-y-3">
                   {workWith.map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-gold-dark" />
+                      <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-ochre-dark" />
                       <span className="text-ink-light">{item}</span>
                     </li>
                   ))}
@@ -71,28 +71,28 @@ export default function ContactPage() {
               </div>
 
               {/* Contact details */}
-              <div className="mt-10 space-y-4 rounded-2xl border border-navy-100 bg-navy-50/50 p-6">
-                <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark">
+              <div className="mt-10 space-y-4 rounded-2xl border border-forest-100 bg-forest-50/50 p-6">
+                <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-ochre-dark">
                   Contact Information
                 </h3>
                 <dl className="space-y-4 text-sm">
                   <div className="flex items-start gap-3">
-                    <PeopleIcon className="mt-0.5 h-5 w-5 shrink-0 text-navy" />
+                    <PeopleIcon className="mt-0.5 h-5 w-5 shrink-0 text-forest" />
                     <div>
                       <dt className="text-ink-muted">Company</dt>
-                      <dd className="font-medium text-navy">
+                      <dd className="font-medium text-forest">
                         {siteConfig.name}
                       </dd>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <GlobeIcon className="mt-0.5 h-5 w-5 shrink-0 text-navy" />
+                    <GlobeIcon className="mt-0.5 h-5 w-5 shrink-0 text-forest" />
                     <div>
                       <dt className="text-ink-muted">Website</dt>
                       <dd>
                         <a
                           href={siteConfig.url}
-                          className="font-medium text-navy hover:text-gold-dark"
+                          className="font-medium text-forest hover:text-ochre-dark"
                         >
                           {siteConfig.domain}
                         </a>
@@ -100,7 +100,7 @@ export default function ContactPage() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <LocationIcon className="mt-0.5 h-5 w-5 shrink-0 text-navy" />
+                    <LocationIcon className="mt-0.5 h-5 w-5 shrink-0 text-forest" />
                     <div>
                       <dt className="text-ink-muted">Location</dt>
                       <dd>
@@ -108,7 +108,7 @@ export default function ContactPage() {
                           href={siteConfig.address.mapsUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-medium text-navy hover:text-gold-dark"
+                          className="font-medium text-forest hover:text-ochre-dark"
                         >
                           {siteConfig.address.line1}, {siteConfig.address.city},
                           <br />
@@ -123,9 +123,9 @@ export default function ContactPage() {
               </div>
 
               {/* Booking card */}
-              <div className="mt-6 rounded-2xl border border-gold/30 bg-gold/5 p-6">
-                <h3 className="flex items-center gap-3 text-lg font-semibold text-navy">
-                  <CalendarIcon className="h-5 w-5 text-gold-dark" />
+              <div className="mt-6 rounded-2xl border border-ochre/30 bg-ochre/5 p-6">
+                <h3 className="flex items-center gap-3 text-lg font-semibold text-forest">
+                  <CalendarIcon className="h-5 w-5 text-ochre-dark" />
                   Book a Meeting
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink-light">
@@ -136,7 +136,7 @@ export default function ContactPage() {
                   href={siteConfig.bookingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-5 inline-flex items-center gap-2 rounded-full bg-navy px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-navy-700"
+                  className="mt-5 inline-flex items-center gap-2 rounded-full bg-forest px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-forest-700"
                 >
                   Schedule a Meeting
                   <span aria-hidden>→</span>
@@ -146,13 +146,13 @@ export default function ContactPage() {
 
             {/* Right: form */}
             <div className="lg:col-span-7">
-              <div className="rounded-2xl border border-navy-100 bg-white p-6 shadow-card sm:p-10">
-                <h2 className="text-2xl font-semibold text-navy">
+              <div className="rounded-2xl border border-forest-100 bg-white p-6 shadow-card sm:p-10">
+                <h2 className="text-2xl font-semibold text-forest">
                   Send us a message
                 </h2>
                 <p className="mt-2 text-sm text-ink-light">
                   Fields marked with{" "}
-                  <span className="text-gold-dark">*</span> are required.
+                  <span className="text-ochre-dark">*</span> are required.
                 </p>
                 <div className="mt-8">
                   <ContactForm />
@@ -164,13 +164,13 @@ export default function ContactPage() {
       </section>
 
       {/* Closing band */}
-      <section className="bg-navy-900 py-16 text-center text-white">
+      <section className="bg-forest-900 py-16 text-center text-white">
         <Container>
-          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-navy-100">
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-forest-100">
             Technology becomes powerful when it connects people, skills, and
             opportunity.
           </p>
-          <p className="mt-4 font-serif text-2xl text-gold-light">
+          <p className="mt-4 font-serif text-2xl text-ochre-light">
             Together, we create new value.
           </p>
         </Container>

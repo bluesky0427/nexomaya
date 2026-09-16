@@ -28,7 +28,7 @@ export default function SectionHeading({
       )}
     >
       {eyebrow && (
-        <span className={cn("eyebrow", light && "text-gold-light")}>
+        <span className={cn("eyebrow", light && "text-ochre-light")}>
           {eyebrow}
         </span>
       )}
@@ -47,7 +47,7 @@ export default function SectionHeading({
         <p
           className={cn(
             "mt-6 text-lg leading-relaxed",
-            light ? "text-navy-100" : "text-ink-light"
+            light ? "text-forest-100" : "text-ink-light"
           )}
         >
           {description}

@@ -13,7 +13,7 @@ type FieldErrors = Partial<
 >;
 
 const inputBase =
-  "w-full rounded-lg border bg-white px-4 py-3 text-ink shadow-sm transition-colors placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-navy/30";
+  "w-full rounded-lg border bg-white px-4 py-3 text-ink shadow-sm transition-colors placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-forest/30";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -125,7 +125,7 @@ export default function ContactForm() {
             <path d="m5 12 4.5 4.5L19 7" />
           </svg>
         </div>
-        <h3 className="mt-5 text-xl font-semibold text-navy">
+        <h3 className="mt-5 text-xl font-semibold text-forest">
           Message received
         </h3>
         <p className="mx-auto mt-3 max-w-md leading-relaxed text-ink-light">
@@ -135,7 +135,7 @@ export default function ContactForm() {
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 text-sm font-semibold text-navy underline-offset-4 hover:underline"
+          className="mt-6 text-sm font-semibold text-forest underline-offset-4 hover:underline"
         >
           Send another message
         </button>
@@ -156,8 +156,8 @@ export default function ContactForm() {
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="mb-2 block text-sm font-medium text-navy">
-            Name <span className="text-gold-dark">*</span>
+          <label htmlFor="name" className="mb-2 block text-sm font-medium text-forest">
+            Name <span className="text-ochre-dark">*</span>
           </label>
           <input
             id="name"
@@ -167,7 +167,7 @@ export default function ContactForm() {
             required
             maxLength={contactLimits.name}
             placeholder="Your full name"
-            className={cn(inputBase, errors.name ? "border-red-300" : "border-navy-100")}
+            className={cn(inputBase, errors.name ? "border-red-300" : "border-forest-100")}
             aria-invalid={Boolean(errors.name)}
             aria-describedby={errors.name ? "name-error" : undefined}
           />
@@ -179,8 +179,8 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="email" className="mb-2 block text-sm font-medium text-navy">
-            Email <span className="text-gold-dark">*</span>
+          <label htmlFor="email" className="mb-2 block text-sm font-medium text-forest">
+            Email <span className="text-ochre-dark">*</span>
           </label>
           <input
             id="email"
@@ -190,7 +190,7 @@ export default function ContactForm() {
             required
             maxLength={contactLimits.email}
             placeholder="you@example.com"
-            className={cn(inputBase, errors.email ? "border-red-300" : "border-navy-100")}
+            className={cn(inputBase, errors.email ? "border-red-300" : "border-forest-100")}
             aria-invalid={Boolean(errors.email)}
             aria-describedby={errors.email ? "email-error" : undefined}
           />
@@ -203,7 +203,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="company" className="mb-2 block text-sm font-medium text-navy">
+        <label htmlFor="company" className="mb-2 block text-sm font-medium text-forest">
           Company / Organization{" "}
           <span className="text-ink-muted">(optional)</span>
         </label>
@@ -214,13 +214,13 @@ export default function ContactForm() {
           autoComplete="organization"
           maxLength={contactLimits.company}
           placeholder="Your company or organization"
-          className={cn(inputBase, "border-navy-100")}
+          className={cn(inputBase, "border-forest-100")}
         />
       </div>
 
       <div>
-        <label htmlFor="reason" className="mb-2 block text-sm font-medium text-navy">
-          Reason for Contact <span className="text-gold-dark">*</span>
+        <label htmlFor="reason" className="mb-2 block text-sm font-medium text-forest">
+          Reason for Contact <span className="text-ochre-dark">*</span>
         </label>
         <select
           id="reason"
@@ -230,7 +230,7 @@ export default function ContactForm() {
           className={cn(
             inputBase,
             "appearance-none bg-[length:1.25rem] bg-[right_0.75rem_center] bg-no-repeat pr-10",
-            errors.reason ? "border-red-300" : "border-navy-100"
+            errors.reason ? "border-red-300" : "border-forest-100"
           )}
           style={{
             backgroundImage:
@@ -256,8 +256,8 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-2 block text-sm font-medium text-navy">
-          Message <span className="text-gold-dark">*</span>
+        <label htmlFor="message" className="mb-2 block text-sm font-medium text-forest">
+          Message <span className="text-ochre-dark">*</span>
         </label>
         <textarea
           id="message"
@@ -269,7 +269,7 @@ export default function ContactForm() {
           className={cn(
             inputBase,
             "resize-y",
-            errors.message ? "border-red-300" : "border-navy-100"
+            errors.message ? "border-red-300" : "border-forest-100"
           )}
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? "message-error" : undefined}
@@ -305,7 +305,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-navy px-8 py-4 text-base font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:bg-navy-700 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-forest px-8 py-4 text-base font-semibold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:bg-forest-700 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
       >
         {status === "submitting" ? (
           <>
@@ -335,7 +335,7 @@ export default function ContactForm() {
       <p className="text-xs leading-relaxed text-ink-muted">
         By submitting this form you agree to be contacted by Nexomaya Technology Group
         regarding your inquiry. We use your information only as described in our{" "}
-        <Link href="/privacy" className="underline underline-offset-4 hover:text-navy">
+        <Link href="/privacy" className="underline underline-offset-4 hover:text-forest">
           Privacy Policy
         </Link>
         .

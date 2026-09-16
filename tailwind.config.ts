@@ -8,34 +8,41 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Primary brand palette
-        navy: {
-          DEFAULT: "#0B2545",
-          50: "#EAF0F7",
-          100: "#CBD9EB",
-          200: "#9DB4D4",
-          300: "#6E8FBD",
-          400: "#3F6AA6",
-          500: "#1F4A82",
-          600: "#143A6B",
-          700: "#0F2E55",
-          800: "#0B2545",
-          900: "#071A33",
+        // Primary brand palette, built around the olive green of the
+        // Nexomaya logo artwork (forest-800 is the exact logo ink).
+        forest: {
+          DEFAULT: "#3C4624",
+          50: "#F5F7EF",
+          100: "#E6EBD8",
+          200: "#CCD5B4",
+          300: "#AEBB8D",
+          400: "#8E9E68",
+          500: "#71814C",
+          600: "#5A683A",
+          700: "#49552D",
+          800: "#3C4624",
+          900: "#2B331A",
+        },
+        // Warm off-white taken from the logo's own ground.
+        cream: {
+          DEFAULT: "#F9F5EE",
+          dark: "#F0EADF",
         },
         ink: {
-          DEFAULT: "#1F2933",
-          light: "#52606D",
-          muted: "#7B8794",
+          DEFAULT: "#1F2419",
+          light: "#4B5340",
+          muted: "#6A7261",
         },
-        // Small accent — refined gold
-        gold: {
-          DEFAULT: "#C8A04D",
-          light: "#DDBE7E",
-          dark: "#A9863A",
+        // Small accent — warm ochre, the complement to the olive.
+        ochre: {
+          DEFAULT: "#B8893A",
+          light: "#D8B871",
+          dark: "#8A6524",
         },
-        // Optional alternate accent — muted green
+        // Reserved for success / confirmation states only, kept distinctly
+        // cooler than the brand olive so it reads as feedback, not branding.
         sage: {
-          DEFAULT: "#3F7D6E",
+          DEFAULT: "#2F6B54",
           light: "#6BA294",
         },
       },
@@ -47,8 +54,8 @@ const config: Config = {
         container: "1200px",
       },
       boxShadow: {
-        soft: "0 10px 40px -12px rgba(11, 37, 69, 0.18)",
-        card: "0 4px 24px -8px rgba(11, 37, 69, 0.14)",
+        soft: "0 10px 40px -12px rgba(43, 51, 26, 0.20)",
+        card: "0 4px 24px -8px rgba(43, 51, 26, 0.16)",
       },
       keyframes: {
         "fade-up": {

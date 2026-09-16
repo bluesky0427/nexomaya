@@ -16,7 +16,7 @@ export default function PageHero({
   description,
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-navy-900 text-white">
+    <section className="relative overflow-hidden bg-forest-900 text-white">
       {/* Decorative background grid + glow */}
       <div
         aria-hidden
@@ -29,28 +29,28 @@ export default function PageHero({
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-gold/20 blur-3xl"
+        className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-ochre/20 blur-3xl"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-40 -left-24 h-96 w-96 rounded-full bg-navy-500/40 blur-3xl"
+        className="pointer-events-none absolute -bottom-40 -left-24 h-96 w-96 rounded-full bg-forest-500/40 blur-3xl"
       />
 
       <Container className="relative py-20 md:py-28">
         <div className="max-w-3xl animate-fade-up">
           {eyebrow && (
-            <span className="eyebrow text-gold-light">{eyebrow}</span>
+            <span className="eyebrow text-ochre-light">{eyebrow}</span>
           )}
           <h1 className="mt-5 text-4xl font-semibold leading-[1.1] text-white md:text-5xl lg:text-6xl">
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-6 text-xl font-medium text-gold-light md:text-2xl">
+            <p className="mt-6 text-xl font-medium text-ochre-light md:text-2xl">
               {subtitle}
             </p>
           )}
           {description && (
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-navy-100">
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-forest-100">
               {description}
             </p>
           )}

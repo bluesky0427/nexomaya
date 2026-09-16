@@ -1,25 +1,19 @@
 import Link from "next/link";
 import { navItems, siteConfig } from "@/lib/site";
 import Container from "./Container";
+import Logo from "./Logo";
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-navy-900 text-navy-100">
+    <footer className="bg-forest-900 text-forest-100">
       <Container className="py-16">
         <div className="grid gap-12 md:grid-cols-12">
           {/* Brand block */}
           <div className="md:col-span-5">
-            <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-white font-serif text-lg font-bold text-navy">
-                NX
-              </span>
-              <span className="font-serif text-lg font-semibold text-white">
-                Nexomaya Technology Group
-              </span>
-            </div>
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-navy-100">
+            <Logo light />
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-forest-100">
               Connecting technology, human skill, and opportunity to create new
               value.
             </p>
@@ -27,7 +21,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div className="md:col-span-3">
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-light">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-ochre-light">
               Navigation
             </h3>
             <ul className="mt-5 space-y-3">
@@ -35,7 +29,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-navy-100 transition-colors hover:text-white"
+                    className="text-sm text-forest-100 transition-colors hover:text-white"
                   >
                     {item.label}
                   </Link>
@@ -46,40 +40,40 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="md:col-span-4">
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-light">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-ochre-light">
               Get in Touch
             </h3>
             <ul className="mt-5 space-y-3 text-sm">
               <li>
-                <span className="text-navy-200">Website</span>
+                <span className="text-forest-200">Website</span>
                 <br />
                 <a
                   href={siteConfig.url}
-                  className="text-navy-100 transition-colors hover:text-white"
+                  className="text-forest-100 transition-colors hover:text-white"
                 >
                   {siteConfig.domain}
                 </a>
               </li>
               <li>
-                <span className="text-navy-200">Location</span>
+                <span className="text-forest-200">Location</span>
                 <br />
                 <a
                   href={siteConfig.address.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-navy-100 transition-colors hover:text-white"
+                  className="text-forest-100 transition-colors hover:text-white"
                 >
                   {siteConfig.address.full}
                 </a>
               </li>
               <li>
-                <span className="text-navy-200">Book a meeting</span>
+                <span className="text-forest-200">Book a meeting</span>
                 <br />
                 <a
                   href={siteConfig.bookingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-navy-100 transition-colors hover:text-white"
+                  className="text-forest-100 transition-colors hover:text-white"
                 >
                   Schedule online →
                 </a>
@@ -87,7 +81,7 @@ export default function Footer() {
             </ul>
             <Link
               href="/contact"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-navy-900 transition-colors hover:bg-gold-light"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-ochre px-5 py-2.5 text-sm font-semibold text-forest-900 transition-colors hover:bg-ochre-light"
             >
               Contact Us
               <span aria-hidden>→</span>
@@ -100,7 +94,7 @@ export default function Footer() {
           <p className="font-serif text-lg text-white">
             Together, we create new value.
           </p>
-          <div className="mt-6 flex flex-col gap-2 text-xs text-navy-200 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-6 flex flex-col gap-2 text-xs text-forest-200 sm:flex-row sm:items-center sm:justify-between">
             <p>
               © {year} Nexomaya Technology Group. All rights reserved.
               <span aria-hidden className="mx-2">·</span>

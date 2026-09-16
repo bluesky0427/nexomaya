@@ -67,17 +67,17 @@ export default function WhatWeDoPage() {
             {services.map((service, index) => (
               <article
                 key={service.title}
-                className="group relative flex flex-col rounded-2xl border border-navy-100 bg-white p-8 shadow-card transition-all hover:-translate-y-1 hover:border-gold/40 hover:shadow-soft"
+                className="group relative flex flex-col rounded-2xl border border-forest-100 bg-white p-8 shadow-card transition-all hover:-translate-y-1 hover:border-ochre/40 hover:shadow-soft"
               >
                 <div className="flex items-center gap-4">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-navy text-gold-light">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-forest text-ochre-light">
                     <service.icon className="h-7 w-7" />
                   </div>
-                  <span className="font-serif text-3xl font-semibold text-navy-100">
+                  <span className="font-serif text-3xl font-semibold text-forest-100">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <h2 className="mt-6 text-xl font-semibold text-navy">
+                <h2 className="mt-6 text-xl font-semibold text-forest">
                   {service.title}
                 </h2>
                 <p className="mt-3 leading-relaxed text-ink-light">
@@ -90,7 +90,7 @@ export default function WhatWeDoPage() {
       </section>
 
       {/* Our Approach */}
-      <section className="bg-navy-900 py-20 text-white md:py-28">
+      <section className="bg-forest-900 py-20 text-white md:py-28">
         <Container>
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
@@ -99,8 +99,8 @@ export default function WhatWeDoPage() {
                 title="Technology as a bridge between people, industries, and opportunity"
                 light
               />
-              <p className="mt-6 flex items-start gap-3 text-navy-100">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/10 text-gold-light">
+              <p className="mt-6 flex items-start gap-3 text-forest-100">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/10 text-ochre-light">
                   <BridgeIcon className="h-5 w-5" />
                 </span>
                 <span className="pt-2">
@@ -117,14 +117,14 @@ export default function WhatWeDoPage() {
                     key={s.step}
                     className="flex gap-5 rounded-xl border border-white/10 bg-white/5 p-6"
                   >
-                    <span className="font-serif text-2xl font-semibold text-gold-light">
+                    <span className="font-serif text-2xl font-semibold text-ochre-light">
                       {s.step}
                     </span>
                     <div>
                       <h3 className="text-lg font-semibold text-white">
                         {s.title}
                       </h3>
-                      <p className="mt-2 leading-relaxed text-navy-100">
+                      <p className="mt-2 leading-relaxed text-forest-100">
                         {s.text}
                       </p>
                     </div>

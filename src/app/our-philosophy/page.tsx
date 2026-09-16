@@ -80,7 +80,7 @@ export default function PhilosophyPage() {
                 practical use of knowledge, tools, systems, and cooperation to
                 solve problems and create value.
               </p>
-              <ul className="space-y-3 border-l-2 border-gold pl-6">
+              <ul className="space-y-3 border-l-2 border-ochre pl-6">
                 {technologyExamples.map((example) => (
                   <li
                     key={example}
@@ -90,7 +90,7 @@ export default function PhilosophyPage() {
                   </li>
                 ))}
               </ul>
-              <p className="font-serif text-xl text-navy">
+              <p className="font-serif text-xl text-forest">
                 Technology exists wherever human skill is used with purpose.
               </p>
             </div>
@@ -99,7 +99,7 @@ export default function PhilosophyPage() {
       </section>
 
       {/* The Power of Division of Labor */}
-      <section className="bg-navy-50/60 py-20 md:py-28">
+      <section className="bg-forest-50/60 py-20 md:py-28">
         <Container>
           <SectionHeading
             eyebrow="Section Two"
@@ -111,17 +111,17 @@ export default function PhilosophyPage() {
             {divisionOfLabor.map((item) => (
               <div
                 key={item.who}
-                className="rounded-xl border border-navy-100 bg-white p-5"
+                className="rounded-xl border border-forest-100 bg-white p-5"
               >
                 <p className="leading-relaxed text-ink-light">
-                  <span className="font-semibold text-navy">{item.who}</span>{" "}
+                  <span className="font-semibold text-forest">{item.who}</span>{" "}
                   {item.what}
                 </p>
               </div>
             ))}
           </div>
           <div className="mx-auto mt-12 max-w-2xl text-center">
-            <p className="font-serif text-2xl text-navy">No single field owns value.</p>
+            <p className="font-serif text-2xl text-forest">No single field owns value.</p>
             <p className="mt-2 text-lg text-ink-light">
               Value is created when different fields work together.
             </p>
@@ -172,7 +172,7 @@ export default function PhilosophyPage() {
       </section>
 
       {/* Opportunity Reveals Potential */}
-      <section className="bg-navy-900 py-20 text-white md:py-28">
+      <section className="bg-forest-900 py-20 text-white md:py-28">
         <Container>
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
@@ -183,17 +183,17 @@ export default function PhilosophyPage() {
               />
             </div>
             <div className="space-y-5 lg:col-span-7">
-              <p className="text-lg leading-relaxed text-navy-100">
+              <p className="text-lg leading-relaxed text-forest-100">
                 Many people have abilities they do not yet recognize. Sometimes
                 the problem is not a lack of talent. Sometimes the problem is a
                 lack of opportunity, environment, guidance, or connection.
               </p>
-              <p className="text-lg leading-relaxed text-navy-100">
+              <p className="text-lg leading-relaxed text-forest-100">
                 When people are encouraged to think proactively, take
                 responsibility for their own lives, and use their abilities with
                 purpose, they begin to create value.
               </p>
-              <p className="text-lg leading-relaxed text-navy-100">
+              <p className="text-lg leading-relaxed text-forest-100">
                 Nexomaya Technology Group helps create that environment. We guide
                 people to recognize their strengths, connect with others, and
                 use their potential to build opportunity, wealth, and meaningful
@@ -221,7 +221,7 @@ export default function PhilosophyPage() {
             ].map((item) => (
               <div
                 key={item}
-                className="rounded-2xl border border-navy-100 bg-navy-50/50 p-7"
+                className="rounded-2xl border border-forest-100 bg-forest-50/50 p-7"
               >
                 <p className="leading-relaxed text-ink">{item}</p>
               </div>
@@ -232,7 +232,7 @@ export default function PhilosophyPage() {
               For Nexomaya Technology Group, innovation is not only about building
               software.
             </p>
-            <p className="font-serif text-xl text-navy">
+            <p className="font-serif text-xl text-forest">
               Innovation means connecting the right people, the right skills, and
               the right technology to solve real problems.
             </p>
@@ -241,7 +241,7 @@ export default function PhilosophyPage() {
       </section>
 
       {/* Final belief */}
-      <section className="bg-navy-50/60 py-20 md:py-28">
+      <section className="bg-forest-50/60 py-20 md:py-28">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <span className="eyebrow">Our Belief</span>
@@ -249,13 +249,13 @@ export default function PhilosophyPage() {
               {finalBeliefs.map((belief) => (
                 <p
                   key={belief}
-                  className="font-serif text-2xl leading-snug text-navy md:text-3xl"
+                  className="font-serif text-2xl leading-snug text-forest md:text-3xl"
                 >
                   {belief}
                 </p>
               ))}
             </div>
-            <div className="mx-auto mt-10 h-1 w-16 rounded-full bg-gold" />
+            <div className="mx-auto mt-10 h-1 w-16 rounded-full bg-ochre" />
             <p className="mt-10 text-lg leading-relaxed text-ink-light">
               This is the philosophy of Nexomaya Technology Group. We create value by
               connecting technology, people, and purpose.

@@ -295,9 +295,13 @@ Organization JSON-LD structured data.
 
 ## 10. Brand & design notes
 
-- **Colors:** Navy `#0B2545` (primary), white, dark gray `#1F2933` (ink), with
-  a restrained **gold** `#C8A04D` accent (a muted **sage green** is also defined
-  in `tailwind.config.ts` if you prefer a green accent — swap `gold` for `sage`).
+- **Colors:** **Forest** olive `#3C4624` (primary — taken from the logo artwork),
+  white, **cream** `#F9F5EE`, and green-tinted ink `#1F2419`, with a restrained
+  **ochre** `#B8893A` accent. `sage` is reserved for success states only. See
+  `tailwind.config.ts`.
+- **Logo:** master artwork lives in `brand/logo-source.webp`. All PNG variants
+  and icons are generated from it by `npm run build:logo` — don't hand-edit the
+  files in `public/`. `src/components/Logo.tsx` renders the header/footer lockup.
 - **Typography:** Playfair Display for headings (authority), Inter for body
   (clarity).
 - **Layout:** Spacious, max-width 1200px, generous vertical rhythm.

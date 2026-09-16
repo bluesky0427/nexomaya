@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/lib/site";
 
@@ -10,7 +12,6 @@ export const alt = `${siteConfig.name} — ${siteConfig.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const TITLE = siteConfig.name;
 const EYEBROW = "TECHNOLOGY · HUMAN SKILL · OPPORTUNITY";
 const SITE_HOST = siteConfig.url.replace(/^https?:\/\//, "");
 
@@ -38,15 +39,20 @@ async function loadGoogleFont(
   }
 }
 
+/** Reads a public/ asset and inlines it, since ImageResponse cannot fetch relative URLs. */
+async function loadAsset(file: string): Promise<string> {
+  const data = await readFile(path.join(process.cwd(), "public", file));
+  return `data:image/png;base64,${data.toString("base64")}`;
+}
+
 export default async function OpengraphImage() {
-  const [playfair, inter] = await Promise.all([
-    loadGoogleFont("Playfair Display", 700, `${TITLE}NX`),
+  // The wordmark is artwork now, so only the supporting text needs a webfont.
+  const [inter, logo] = await Promise.all([
     loadGoogleFont("Inter", 500, `${EYEBROW}${siteConfig.tagline}${SITE_HOST}`),
+    loadAsset("logo-light.png"),
   ]);
-  const serif = playfair ? "Playfair Display" : undefined;
 
   const fonts = [
-    playfair && { name: "Playfair Display", data: playfair, weight: 700 as const },
     inter && { name: "Inter", data: inter, weight: 500 as const },
   ].filter((font) => font !== null);
 
@@ -60,75 +66,45 @@ export default async function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px 80px",
-          backgroundColor: "#071A33",
+          backgroundColor: "#2B331A",
           fontFamily: inter ? "Inter" : undefined,
           backgroundImage:
-            "radial-gradient(circle at 92% 8%, rgba(200,160,77,0.28) 0%, rgba(7,26,51,0) 45%), radial-gradient(circle at 0% 100%, rgba(31,74,130,0.55) 0%, rgba(7,26,51,0) 50%)",
-          color: "#ffffff",
+            "radial-gradient(circle at 92% 8%, rgba(184,137,58,0.30) 0%, rgba(43,51,26,0) 45%), radial-gradient(circle at 0% 100%, rgba(113,129,76,0.55) 0%, rgba(43,51,26,0) 50%)",
+          color: "#F9F5EE",
         }}
       >
-        {/* Monogram + eyebrow */}
-        <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 88,
-              height: 88,
-              borderRadius: 18,
-              backgroundColor: "#0B2545",
-              border: "2px solid rgba(255,255,255,0.15)",
-              fontFamily: serif,
-              fontSize: 46,
-              fontWeight: 700,
-            }}
-          >
-            <span style={{ color: "#ffffff" }}>N</span>
-            <span style={{ color: "#C8A04D" }}>X</span>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              fontSize: 22,
-              letterSpacing: 5,
-              color: "#DDBE7E",
-            }}
-          >
-            {EYEBROW}
-          </div>
+        {/* Eyebrow */}
+        <div
+          style={{
+            display: "flex",
+            fontSize: 22,
+            letterSpacing: 5,
+            color: "#D8B871",
+          }}
+        >
+          {EYEBROW}
         </div>
 
-        {/* Name + tagline */}
+        {/* Logo lockup + tagline */}
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div
-            style={{
-              display: "flex",
-              fontFamily: serif,
-              fontSize: 84,
-              fontWeight: 700,
-              lineHeight: 1.05,
-              letterSpacing: -1,
-            }}
-          >
-            {TITLE}
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={logo} alt="" width={760} height={210} />
           <div
             style={{
               display: "flex",
               width: 96,
               height: 6,
               borderRadius: 3,
-              backgroundColor: "#C8A04D",
-              marginTop: 32,
+              backgroundColor: "#B8893A",
+              marginTop: 28,
             }}
           />
           <div
             style={{
               display: "flex",
-              marginTop: 32,
-              fontSize: 36,
-              color: "#DDBE7E",
+              marginTop: 28,
+              fontSize: 34,
+              color: "#E6EBD8",
             }}
           >
             {siteConfig.tagline}
@@ -136,7 +112,7 @@ export default async function OpengraphImage() {
         </div>
 
         {/* Footer line */}
-        <div style={{ display: "flex", fontSize: 26, color: "#CBD9EB" }}>
+        <div style={{ display: "flex", fontSize: 26, color: "#CCD5B4" }}>
           {SITE_HOST}
         </div>
       </div>
