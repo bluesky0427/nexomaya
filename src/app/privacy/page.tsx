@@ -18,7 +18,7 @@ export const metadata: Metadata = pageMetadata({
  * service providers, or new forms, update the relevant sections.
  */
 
-const EFFECTIVE_DATE = "September 15, 2026";
+const EFFECTIVE_DATE = "September 20, 2026";
 
 const sections: { title: string; body: React.ReactNode }[] = [
   {
@@ -177,9 +177,9 @@ const sections: { title: string; body: React.ReactNode }[] = [
     title: "9. External Links",
     body: (
       <p>
-        This site links to external services, such as Google Calendar for
-        booking meetings and Google Maps for our location. Their own privacy
-        policies apply when you use them.
+        This site links to external services, such as Calendly for booking
+        meetings and Google Maps for our location. Their own privacy policies
+        apply when you use them.
       </p>
     ),
   },

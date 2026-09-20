@@ -13,8 +13,8 @@ export const siteConfig = {
   tagline: "Connecting Technology, Human Skill, and Opportunity",
   description:
     "Nexomaya Technology Group connects technology, human skill, and cross-industry collaboration to create new business value and opportunity.",
-  /** Google Appointment Scheduling page for booking a meeting. */
-  bookingUrl: "https://calendar.app.google/tk5C6taEbNzapRpw9",
+  /** Calendly page for booking a meeting. */
+  bookingUrl: "https://calendly.com/danieltanaka0420/30min",
   address: {
     line1: "2-12-36 Komachi",
     city: "Kamakura",

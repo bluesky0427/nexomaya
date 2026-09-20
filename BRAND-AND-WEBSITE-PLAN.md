@@ -233,7 +233,7 @@ Whether you're a client looking for technology solutions, a business interested 
 **3 — Direct details**
 - Contact form (no public email address — see Section 13, Step 5b)
 - Location: 2-12-36 Komachi, Kamakura, Kanagawa 248-0006, Japan
-- Book a meeting: Google Appointment Scheduling — https://calendar.app.google/tk5C6taEbNzapRpw9
+- Book a meeting: Calendly — https://calendly.com/danieltanaka0420/30min
 - Optional: LinkedIn and other professional channels.
 
 ---
